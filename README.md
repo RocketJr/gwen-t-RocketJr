@@ -14,3 +14,5 @@ This project's goal is to create a (simplified) clone of the
 ---
 
 **The rest of the documentation is left for the users of this template to complete**
+
+Para la entrega parcial 1, empece realizando los distintos tests para los elementos basicos del juego: Jugador y Carta
