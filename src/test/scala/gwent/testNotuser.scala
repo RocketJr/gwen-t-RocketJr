@@ -3,13 +3,13 @@ package gwent
 
 import munit.FunSuite
 
-class testplayer extends munit.FunSuite{
-  var playerOne: player = _
-  var playerTwo: player = _
+class testNotuser extends munit.FunSuite{
+  var playerOne: Notuser = _
+  var playerTwo: Notuser = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    playerOne = new player("Alejandro", "top", 3, 20, 4)
-    playerTwo = new player("Dex", "bottom", 2, 20, 4)
+    playerOne = new Notuser("Alejandro", "top", 3, 20, 4)
+    playerTwo = new Notuser("Dex", "bottom", 2, 20, 4)
   }
 
   test("A player needs a name") {

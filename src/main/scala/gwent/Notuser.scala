@@ -21,7 +21,7 @@ package gwent
  * @version 1.0.0
  */
 
-class player(val name: String, val pos: String, var gems: Int, var deck: Int, var hand: Int) {
+class Notuser(val name: String, val pos: String, var gems: Int, var deck: Int, var hand: Int) {
   def TakeCard(card: Int): Unit = {
     deck -= card
     hand += card
