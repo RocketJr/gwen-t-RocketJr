@@ -48,7 +48,7 @@ class UserTest extends FunSuite {
     assertEquals(user1.deck, deck)
     assertEquals(user1.hand, hand)
     user1.TakeCard(3)
-    assertEquals(user1.deck, 17)
-    assertEquals(user1.hand, 7)
+    assertEquals(user1.deck, 37)
+    assertEquals(user1.hand, 13)
   }
 }

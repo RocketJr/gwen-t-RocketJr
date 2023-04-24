@@ -42,7 +42,7 @@ class ComputerTest extends FunSuite {
     assertEquals(PC.deck, deck)
     assertEquals(PC.hand, hand)
     PC.TakeCard(3)
-    assertEquals(PC.deck, 17)
-    assertEquals(PC.hand, 7)
+    assertEquals(PC.deck, 37)
+    assertEquals(PC.hand, 13)
   }
 }
