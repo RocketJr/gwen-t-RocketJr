@@ -52,6 +52,11 @@ class ComputerTest extends FunSuite {
     assertEquals(PC.hand, 7)
   }
 
+  test("A computer can be created with all the necessary data") {
+    assertEquals(new Computer(name, pos1, gems, deck, hand), PC)
+    assertNotEquals(new Computer(name, pos2, gems, deck, hand), PC)
+  }
+
   test("The hash code of a User is consistent with equals") {
     assertEquals(new Computer(name, pos1, gems, deck, hand).##, PC.##)
   }

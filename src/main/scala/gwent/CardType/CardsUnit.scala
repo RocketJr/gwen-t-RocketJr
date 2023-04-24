@@ -12,6 +12,6 @@ package gwent.CardType
  * @version 1.0.0
  */
 
-class CardsUnit(val CardName: String, val Classify: String)  {
+class CardsUnit(val CardName: String, val Classify: String, val Empowered: String)  {
 
 }

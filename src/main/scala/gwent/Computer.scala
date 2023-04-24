@@ -21,23 +21,13 @@ import java.util.Objects
 class Computer(name: String,pos: String,gems: Int,deck: Int,hand: Int) extends
   AbstractPlayer(name, pos, gems, deck, hand) with Equals {
 
-  override def TakeCard(card: Int): Unit = {
-    deck -= card
-    hand += card
-  }
-
-  override def PlayCard(card: Int): Unit = {
-    hand -= card
-  }
-
-  override def canEqual(that: Any): Boolean = {
+  override def canEqual(that: Any): Boolean =
     that.isInstanceOf[Computer]
-  }
 
   override def equals(that: Any): Boolean = {
     if (canEqual(that)) {
       val other = that.asInstanceOf[Computer]
-      name == other.name && gems == other.gems && deck == other.deck && hand == other.hand
+      name == other.name && pos == other.pos
     } else {
       false
     }

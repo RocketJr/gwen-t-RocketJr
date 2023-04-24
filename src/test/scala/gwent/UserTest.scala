@@ -58,6 +58,11 @@ class UserTest extends FunSuite {
     assertEquals(user1.hand, 7)
   }
 
+  test("A computer can be created with all the necessary data") {
+    assertEquals(new User(name, pos2, gems, deck, hand), user2)
+    assertNotEquals(user1, user2)
+  }
+
   test("The hash code of a User is consistent with equals") {
     assertEquals(new User(name, pos1, gems, deck, hand).##, user1.##)
   }
