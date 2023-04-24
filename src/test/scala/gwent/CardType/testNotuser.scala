@@ -1,5 +1,7 @@
 package cl.uchile.dcc
-package gwent
+package gwent.CardType
+
+import gwent.Notuser
 
 import munit.FunSuite
 
