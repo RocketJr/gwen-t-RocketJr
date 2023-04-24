@@ -51,4 +51,14 @@ class UserTest extends FunSuite {
     assertEquals(user1.deck, 37)
     assertEquals(user1.hand, 13)
   }
+
+  test("A deck and hand needs to be changed when a card is pulled played from the hand") {
+    assertEquals(user1.hand, hand)
+    user1.PlayCard(3)
+    assertEquals(user1.hand, 7)
+  }
+
+  test("The hash code of a User is consistent with equals") {
+    assertEquals(new User(name, pos1, gems, deck, hand).##, user1.##)
+  }
 }

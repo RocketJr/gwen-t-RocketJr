@@ -11,11 +11,11 @@ class ComputerTest extends FunSuite {
   val deck: Int = 40
   val hand: Int = 10
 
-  var PC: User = _
+  var PC: Computer = _
 
 
   override  def beforeEach(context: BeforeEach): Unit = {
-    PC = new User(name, pos1, gems, deck, hand)
+    PC = new Computer(name, pos1, gems, deck, hand)
   }
 
   test("A player needs a name") {
@@ -44,5 +44,15 @@ class ComputerTest extends FunSuite {
     PC.TakeCard(3)
     assertEquals(PC.deck, 37)
     assertEquals(PC.hand, 13)
+  }
+
+  test("A deck and hand needs to be changed when a card is pulled played from the hand") {
+    assertEquals(PC.hand, hand)
+    PC.PlayCard(3)
+    assertEquals(PC.hand, 7)
+  }
+
+  test("The hash code of a User is consistent with equals") {
+    assertEquals(new Computer(name, pos1, gems, deck, hand).##, PC.##)
   }
 }
