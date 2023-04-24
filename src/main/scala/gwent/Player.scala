@@ -12,4 +12,8 @@ trait Player {
   var deck: Int
   /** The cards the player has on the hand. */
   var hand: Int
+
+  def TakeCard(card: Int): Unit
+
+  def PlayCard(card: Int): Unit
 }

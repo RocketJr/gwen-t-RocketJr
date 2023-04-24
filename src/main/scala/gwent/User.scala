@@ -7,7 +7,14 @@ import java.util.Objects
 class User(name: String,pos: String,gems: Int,deck: Int,hand: Int) extends
   AbstractPlayer(name, pos, gems, deck, hand){
 
+  override def TakeCard(card: Int): Unit = {
+    deck -= card
+    hand += card
+  }
 
+  override def PlayCard(card: Int): Unit = {
+    hand -= card
+  }
 
   override def canEqual(that: Any): Boolean = {
     that.isInstanceOf[User]

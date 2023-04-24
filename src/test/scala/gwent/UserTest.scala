@@ -29,4 +29,5 @@ class UserTest extends FunSuite {
     assertEquals(user2.pos, pos2)
   }
 
+  
 }
