@@ -35,13 +35,13 @@ class UserTest extends FunSuite {
   }
 
   test("A player needs cards on the deck") {
-    assertEquals(user1.gems, deck)
-    assertEquals(user2.gems, deck)
+    assertEquals(user1.deck, deck)
+    assertEquals(user2.deck, deck)
   }
 
   test("A player needs cards on the hand") {
-    assertEquals(user1.gems, hand)
-    assertEquals(user2.gems, hand)
+    assertEquals(user1.hand, hand)
+    assertEquals(user2.hand, hand)
   }
 
   test("A deck and hand needs to be changed when a card is pulled from the deck") {

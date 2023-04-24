@@ -31,11 +31,11 @@ class ComputerTest extends FunSuite {
   }
 
   test("A player needs cards on the deck") {
-    assertEquals(PC.gems, deck)
+    assertEquals(PC.deck, deck)
   }
 
   test("A player needs cards on the hand") {
-    assertEquals(PC.gems, hand)
+    assertEquals(PC.hand, hand)
   }
 
   test("A deck and hand needs to be changed when a card is pulled from the deck") {
