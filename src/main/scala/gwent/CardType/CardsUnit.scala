@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent
+package gwent.CardType
 
 class CardsUnit {
 
