@@ -26,4 +26,23 @@ class ComputerTest extends FunSuite {
     assertEquals(PC.pos, pos1)
   }
 
+  test("A player needs lives") {
+    assertEquals(PC.gems, gems)
+  }
+
+  test("A player needs cards on the deck") {
+    assertEquals(PC.gems, deck)
+  }
+
+  test("A player needs cards on the hand") {
+    assertEquals(PC.gems, hand)
+  }
+
+  test("A deck and hand needs to be changed when a card is pulled from the deck") {
+    assertEquals(PC.deck, deck)
+    assertEquals(PC.hand, hand)
+    PC.TakeCard(3)
+    assertEquals(PC.deck, 17)
+    assertEquals(PC.hand, 7)
+  }
 }
