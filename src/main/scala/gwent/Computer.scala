@@ -19,7 +19,7 @@ import java.util.Objects
  */
 
 class Computer(name: String,pos: String,gems: Int,deck: Int,hand: Int) extends
-  AbstractPlayer(name, pos, gems, deck, hand) with Equals {
+  AbstractPlayer(name, pos, gems, deck, hand) {
 
   override def canEqual(that: Any): Boolean =
     that.isInstanceOf[Computer]
