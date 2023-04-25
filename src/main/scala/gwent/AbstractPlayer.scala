@@ -22,10 +22,18 @@ import gwent.CardType.Cards
 abstract class AbstractPlayer(val name: String, val pos: String, var gems: Int, var deck: List[Cards], var hand: List[Cards])
   extends Player with Equals {
 
+
+  /**
+   * Takes the first card from the deck and adds it to the hand
+   */
   override def TakeCard(): Unit = {
+    // If the list is not empty
     if (deck != null) {
+      // Take the first card from the deck
       val First = deck.head
+      // Adds it to the hand
       hand = hand :+ First
+      // Makes a new deck without the first card
       deck = deck.tail
     }
     //deck -= card
