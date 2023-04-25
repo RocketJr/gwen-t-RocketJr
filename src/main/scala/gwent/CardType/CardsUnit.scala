@@ -6,6 +6,7 @@ import java.util.Objects
 /**
  * @param CardName The name of the Card.
  * @param Classify The classification of the card.
+ * @param Empowered The power of the Card.                 
  *
  * @constructor Creates a new card with a given name and classification.
  *
