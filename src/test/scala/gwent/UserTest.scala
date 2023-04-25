@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package gwent
 
+import cl.uchile.dcc.gwent.CardType.{Cards, CardsUnit}
 import munit.FunSuite
 
 class UserTest extends FunSuite {
@@ -8,8 +9,10 @@ class UserTest extends FunSuite {
   val pos1: String = "Bottom"
   val pos2: String = "Top"
   val gems: Int = 3
-  val deck: Int = 40
-  val hand: Int = 10
+  var Card1 = new CardsUnit("Sad man", "Melee", 10)
+  var Card2 = new CardsUnit("Happy man", "Ranged", 2)
+  val deck: List[Cards] = List(Card1, Card2)
+  val hand: List[Cards] = List()
 
   var user1: User = _
   var user2: User = _
@@ -47,15 +50,9 @@ class UserTest extends FunSuite {
   test("A deck and hand needs to be changed when a card is pulled from the deck") {
     assertEquals(user1.deck, deck)
     assertEquals(user1.hand, hand)
-    user1.TakeCard(3)
-    assertEquals(user1.deck, 37)
-    assertEquals(user1.hand, 13)
-  }
-
-  test("A deck and hand needs to be changed when a card is pulled played from the hand") {
-    assertEquals(user1.hand, hand)
-    user1.PlayCard(3)
-    assertEquals(user1.hand, 7)
+    user1.TakeCard()
+    assertEquals(user1.deck, List(Card2))
+    assertEquals(user1.hand, List(Card1))
   }
 
   test("A computer can be created with all the necessary data") {

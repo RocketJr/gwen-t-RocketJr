@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent
 
+import cl.uchile.dcc.gwent.CardType.Cards
+
 import java.util.Objects
 
 /** A Trait representing a Player with a name, it's position on the board, hit points, the number of cards on
@@ -27,11 +29,9 @@ trait Player {
   /** The hit points of the Player. */
   var gems: Int
   /** The cards the player has on the deck. */
-  var deck: Int
+  var deck: List[Cards]
   /** The cards the player has on the hand. */
-  var hand: Int
+  var hand: List[Cards]
 
-  def TakeCard(card: Int): Unit
-
-  def PlayCard(card: Int): Unit
+  def TakeCard(): Unit
 }

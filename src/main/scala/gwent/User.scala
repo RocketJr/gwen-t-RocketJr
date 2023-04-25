@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent
 
+import cl.uchile.dcc.gwent.CardType.Cards
+
 import java.util.Objects
 
 /** A Player that extends AbstractPlayer and takes cards from the deck to the hand, and plays cards from the hand.
@@ -18,7 +20,7 @@ import java.util.Objects
  * @version 1.0.0
  */
 
-class User(name: String,pos: String,gems: Int,deck: Int,hand: Int) extends
+class User(name: String,pos: String,gems: Int,deck: List[Cards],hand: List[Cards]) extends
   AbstractPlayer(name, pos, gems, deck, hand) {
 
   override def canEqual(that: Any): Boolean = {
