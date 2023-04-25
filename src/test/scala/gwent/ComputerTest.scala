@@ -5,6 +5,7 @@ import munit.FunSuite
 
 class ComputerTest extends FunSuite {
   val name: String = "Player 2"
+  val name2: String = "Player 3"
   val pos1: String = "Bottom"
   val pos2: String = "Top"
   val gems: Int = 3
@@ -57,7 +58,11 @@ class ComputerTest extends FunSuite {
     assertNotEquals(new Computer(name, pos2, gems, deck, hand), PC)
   }
 
-  test("The hash code of a User is consistent with equals") {
+  test("A computer has to be different from Another") {
+    assert(!PC.equals("Another"))
+  }
+
+  test("The hash code of a computer is consistent with equals") {
     assertEquals(new Computer(name, pos1, gems, deck, hand).##, PC.##)
   }
 }

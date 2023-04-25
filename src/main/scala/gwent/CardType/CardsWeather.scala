@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.CardType
 
+import java.util.Objects
+
 /**
  * @param CardName The name of the Card.
  *
@@ -11,6 +13,23 @@ package gwent.CardType
  * @version 1.0.0
  */
 
-class CardsWeather(val CardName: String, val Classify: String) {
+class CardsWeather(CardName: String, Classify: String, Empowered: Int)
+  extends AbstractCards(CardName, Classify, 0) with Equals {
+
+  override def canEqual(that: Any): Boolean =
+    that.isInstanceOf[CardsWeather]
+
+  override def equals(that: Any): Boolean = {
+    if (canEqual(that)) {
+      val other = that.asInstanceOf[CardsWeather]
+      CardName == other.CardName && Classify == other.Classify
+    } else {
+      false
+    }
+  }
+
+  override def hashCode: Int = {
+    Objects.hash(classOf[CardsWeather], CardName, Classify, Empowered)
+  }
 
 }

@@ -63,6 +63,10 @@ class UserTest extends FunSuite {
     assertNotEquals(user1, user2)
   }
 
+  test("A User has to be different from Another") {
+    assert(!user1.equals("Another"))
+  }
+
   test("The hash code of a User is consistent with equals") {
     assertEquals(new User(name, pos1, gems, deck, hand).##, user1.##)
   }
