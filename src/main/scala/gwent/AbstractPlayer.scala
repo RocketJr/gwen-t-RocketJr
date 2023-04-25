@@ -29,12 +29,4 @@ abstract class AbstractPlayer(val name: String, val pos: String, var gems: Int, 
     //deck -= card
     //hand += card
   }
-
-  //override def PlayCard(card: Cards): Unit = {
-    //if (deck != null) {
-      //hand.filter(_ != card)
-    //}
-    //hand -= card
-  //}
-
 }

@@ -55,13 +55,15 @@ class UserTest extends FunSuite {
     assertEquals(user1.hand, List(Card1))
   }
 
-  test("A computer can be created with all the necessary data") {
+  test("A computer and a card can be created with all the necessary data") {
     assertEquals(new User(name, pos2, gems, deck, hand), user2)
     assertNotEquals(user1, user2)
+    assertEquals(new CardsUnit("Sad man", "Melee", 10), Card1)
   }
 
-  test("A User has to be different from Another") {
+  test("A User and a card has to be different from Another") {
     assert(!user1.equals("Another"))
+    assert(!Card1.equals("Another"))
   }
 
   test("The hash code of a User is consistent with equals") {
