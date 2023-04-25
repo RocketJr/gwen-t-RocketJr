@@ -11,7 +11,9 @@ import gwent.CardType.Cards
  * @param gems The amount of lives the player has.
  * @param deck The amount of cards the player has on the deck.
  * @param hand The amount of cards the player has on the hand.
+ *
  * @constructor Creates a new player with the specified information.
+ *
  * @author Leonardo Rikhardsson
  * @since 1.0.1
  * @version 1.0.0

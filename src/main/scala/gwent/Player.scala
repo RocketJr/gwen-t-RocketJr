@@ -6,7 +6,7 @@ import cl.uchile.dcc.gwent.CardType.Cards
 import java.util.Objects
 
 /** A Trait representing a Player with a name, it's position on the board, hit points, the number of cards on
- * the deck, the number of cards on the hand. Where you can add cards on your hand and play cards from your hand.
+ * the deck, the number of cards on the hand. Where you can add cards on your hand.
  *
  * @constructor Creates a new player with the specified information.
  *

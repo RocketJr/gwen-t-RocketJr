@@ -5,7 +5,7 @@ import cl.uchile.dcc.gwent.CardType.Cards
 
 import java.util.Objects
 
-/** A Computer that extends AbstractPlayer and takes cards from the deck to the hand, and plays cards from the hand.
+/** A Computer that extends AbstractPlayer and takes cards from the deck to the hand.
  *
  * @param name The name of the player.
  * @param pos The position the player is in.
