@@ -6,7 +6,6 @@ import java.util.Objects
 /**
  * @param CardName The name of the Card.
  * @param Classify The classification of the card.
- * @param Empowered The power of the Card.                  
  *
  * @constructor Creates a new card with a given name and type.
  *
@@ -15,15 +14,14 @@ import java.util.Objects
  * @version 1.0.0
  */
 
-class CardsWeather(CardName: String, Classify: String, Empowered: Int)
-  extends AbstractCards(CardName, Classify, 0) with Equals {
+class WeatherCard(val CardName: String, val Classify: String) extends Cards with Equals {
 
   override def canEqual(that: Any): Boolean =
-    that.isInstanceOf[CardsWeather]
+    that.isInstanceOf[WeatherCard]
 
   override def equals(that: Any): Boolean = {
     if (canEqual(that)) {
-      val other = that.asInstanceOf[CardsWeather]
+      val other = that.asInstanceOf[WeatherCard]
       CardName == other.CardName && Classify == other.Classify
     } else {
       false
@@ -31,7 +29,7 @@ class CardsWeather(CardName: String, Classify: String, Empowered: Int)
   }
 
   override def hashCode: Int = {
-    Objects.hash(classOf[CardsWeather], CardName, Classify, Empowered)
+    Objects.hash(classOf[WeatherCard], CardName, Classify)
   }
 
 }

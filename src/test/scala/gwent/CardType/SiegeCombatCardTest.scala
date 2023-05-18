@@ -3,7 +3,7 @@ package gwent.CardType
 
 import munit.FunSuite
 
-class CardsUnitTest extends FunSuite {
+class SiegeCombatCardTest extends FunSuite {
   val name: String = "Troop"
   val class1: String = "cuerpo a cuerpo"
   var class2: String =  "a distancia"
@@ -11,16 +11,16 @@ class CardsUnitTest extends FunSuite {
   var Empowered1: Int = 10
   var Empowered2: Int = 2
 
-  var troop1: CardsUnit = _
-  var troop2: CardsUnit = _
-  var troop3: CardsUnit = _
-  var troop4: CardsUnit = _
+  var troop1: SiegeCombatCard = _
+  var troop2: SiegeCombatCard = _
+  var troop3: SiegeCombatCard = _
+  var troop4: SiegeCombatCard = _
 
   override  def beforeEach(context: BeforeEach): Unit = {
-    troop1 = new CardsUnit(name, class1, Empowered1)
-    troop2 = new CardsUnit(name, class2, Empowered1)
-    troop3 = new CardsUnit(name, class3, Empowered2)
-    troop4 = new CardsUnit(name, class1, Empowered2)
+    troop1 = new SiegeCombatCard(name, class1, Empowered1)
+    troop2 = new SiegeCombatCard(name, class2, Empowered1)
+    troop3 = new SiegeCombatCard(name, class3, Empowered2)
+    troop4 = new SiegeCombatCard(name, class1, Empowered1)
   }
 
   test("A Card needs a name") {
@@ -33,8 +33,8 @@ class CardsUnitTest extends FunSuite {
   }
 
   test("A card needs power") {
-    assertEquals(troop1.Empowered, Empowered1)
-    assertEquals(troop3.Empowered, Empowered2)
+    assertEquals(troop1.Power, Empowered1)
+    assertEquals(troop3.Power, Empowered2)
   }
 
   test("A CardUnit can be created with all the necessary data") {
@@ -47,6 +47,6 @@ class CardsUnitTest extends FunSuite {
   }
 
   test("The hash code of a CardUnit is consistent with equals") {
-    assertEquals(new CardsUnit(name, class1, Empowered1).##, troop1.##)
+    assertEquals(new SiegeCombatCard(name, class1, Empowered1).##, troop1.##)
   }
 }

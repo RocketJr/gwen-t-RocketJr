@@ -3,18 +3,17 @@ package gwent.CardType
 
 import munit.FunSuite
 
-class CardsWeatherTest extends FunSuite {
+class WeatherCardTest extends FunSuite {
   val name: String = "Climate"
   val type1: String = "Weak"
   var type2: String = "Strong"
-  var Power: Int = 0
 
-  var troop1: CardsWeather = _
-  var troop2: CardsWeather= _
+  var troop1: WeatherCard = _
+  var troop2: WeatherCard= _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    troop1 = new CardsWeather(name, type1, Power)
-    troop2 = new CardsWeather(name, type2, Power)
+    troop1 = new WeatherCard(name, type1)
+    troop2 = new WeatherCard(name, type2)
   }
 
   test("A Card needs a name") {
@@ -26,13 +25,8 @@ class CardsWeatherTest extends FunSuite {
     assertEquals(troop2.Classify, type2)
   }
 
-  test("A card needs power") {
-    assertEquals(troop1.Empowered, Power)
-    assertEquals(troop2.Empowered, Power)
-  }
-
   test("A CardUnit can be created with all the necessary data") {
-    assertEquals(new CardsWeather(name, type1, Power), troop1)
+    assertEquals(new WeatherCard(name, type1), troop1)
     assertNotEquals(troop1, troop2)
   }
 
@@ -41,6 +35,6 @@ class CardsWeatherTest extends FunSuite {
   }
 
   test("The hash code of a CardUnit is consistent with equals") {
-    assertEquals(new CardsWeather(name, type1, Power).##, troop1.##)
+    assertEquals(new WeatherCard(name, type1).##, troop1.##)
   }
 }
