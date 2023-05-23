@@ -14,7 +14,8 @@ class UserTest extends FunSuite {
   var Card2 = new RangedCombatCard("Card 2", "Ranged Combat", 8)
   var Card3 = new SiegeCombatCard("Card 3", "Siege Combat", 12)
   var Card4 = new WeatherCard("Card 4", "Weather")
-  val deck1: List[Cards] = List(Card1, Card2)
+  var Card5 = new CloseCombatCard("Card 5", "Close Combat", 123)
+  val deck1: List[Cards] = List(Card1, Card5)
   val deck2: List[Cards] = List(Card3)
   val hand: List[Cards] = List(Card4)
   val deck3: List[Cards] = List.empty
@@ -57,15 +58,28 @@ class UserTest extends FunSuite {
     assertEquals(user1.deck, deck1)
     assertEquals(user1.hand, hand)
     user1.DrawCard()
-    assertEquals(user1.deck, List(Card2))
+    assertEquals(user1.deck, List(Card5))
     assertEquals(user1.hand, List(Card1, Card4))
     user1.DrawCard()
     assertEquals(user1.deck, List())
-    assertEquals(user1.hand, List(Card2, Card1, Card4))
+    assertEquals(user1.hand, List(Card5, Card1, Card4))
 
     Card1.play(user1, closeCombatZone)
-    assertEquals(user1.hand, List(Card2, Card4))
+    assertEquals(user1.hand, List(Card5, Card4))
     assertEquals(closeCombatZone.getCards, List(Card1))
+    Card1.play(user1, closeCombatZone)
+    assertEquals(closeCombatZone.getCards, List(Card1))
+
+    Card5.play(user1, rangedCombatZone)
+    assertEquals(user1.hand, List(Card5, Card4))
+
+    Card4.play(user1, weatherZone)
+    assertEquals(user1.hand, List(Card5))
+    assertEquals(weatherZone.getCards, List(Card4))
+
+    Card5.play(user1, closeCombatZone)
+    assertEquals(user1.hand, List())
+    assertEquals(closeCombatZone.getCards, List(Card5, Card1))
   }
 
   test("A computer and a card can be created with all the necessary data") {
