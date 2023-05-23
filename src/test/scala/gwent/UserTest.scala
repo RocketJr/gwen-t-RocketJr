@@ -16,8 +16,8 @@ class UserTest extends FunSuite {
   var Card4 = new WeatherCard("Card 4", "Weather")
   var Card5 = new CloseCombatCard("Card 5", "Close Combat", 123)
   val deck1: List[Cards] = List(Card1, Card5)
-  val deck2: List[Cards] = List(Card3)
-  val hand: List[Cards] = List(Card4)
+  val deck2: List[Cards] = List(Card3, Card5, Card1, Card2)
+  val hand: List[Cards] = List(Card4, Card3, Card2)
   val deck3: List[Cards] = List.empty
 
   var closeCombatZone = new CCBoard()
@@ -53,33 +53,49 @@ class UserTest extends FunSuite {
     assertEquals(user2.hand, hand)
   }
 
+  test("A deck should have the same cards after shuffling, not necessarily on the same order") {
+    assertEquals(user2.deck, deck2)
+    val expected: List[Cards] = List(Card5, Card2, Card3, Card1)
+    scala.util.Random.setSeed(57L)
+    user2.ShuffleDeck()
+    assertEquals(user2.deck, expected)
+  }
+
   test("A deck and hand needs to be changed when a card is pulled from the deck, and " +
     "be able to play a card which should be seen") {
     assertEquals(user1.deck, deck1)
     assertEquals(user1.hand, hand)
     user1.DrawCard()
     assertEquals(user1.deck, List(Card5))
-    assertEquals(user1.hand, List(Card1, Card4))
+    assertEquals(user1.hand, List(Card1, Card4, Card3, Card2))
     user1.DrawCard()
     assertEquals(user1.deck, List())
-    assertEquals(user1.hand, List(Card5, Card1, Card4))
+    assertEquals(user1.hand, List(Card5, Card1, Card4, Card3, Card2))
 
     Card1.play(user1, closeCombatZone)
-    assertEquals(user1.hand, List(Card5, Card4))
+    assertEquals(user1.hand, List(Card5, Card4, Card3, Card2))
     assertEquals(closeCombatZone.getCards, List(Card1))
     Card1.play(user1, closeCombatZone)
     assertEquals(closeCombatZone.getCards, List(Card1))
 
     Card5.play(user1, rangedCombatZone)
-    assertEquals(user1.hand, List(Card5, Card4))
+    assertEquals(user1.hand, List(Card5, Card4, Card3, Card2))
 
     Card4.play(user1, weatherZone)
-    assertEquals(user1.hand, List(Card5))
+    assertEquals(user1.hand, List(Card5, Card3, Card2))
     assertEquals(weatherZone.getCards, List(Card4))
 
     Card5.play(user1, closeCombatZone)
-    assertEquals(user1.hand, List())
+    assertEquals(user1.hand, List(Card3, Card2))
     assertEquals(closeCombatZone.getCards, List(Card5, Card1))
+
+    Card2.play(user1, rangedCombatZone)
+    assertEquals(user1.hand, List(Card3))
+    assertEquals(rangedCombatZone.getCards, List(Card2))
+
+    Card3.play(user1, siegeCombatZone)
+    assertEquals(user1.hand, List())
+    assertEquals(siegeCombatZone.getCards, List(Card3))
   }
 
   test("A computer and a card can be created with all the necessary data") {
