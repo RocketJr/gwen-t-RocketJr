@@ -80,22 +80,33 @@ class UserTest extends FunSuite {
 
     Card5.play(user1, rangedCombatZone)
     assertEquals(user1.hand, List(Card5, Card4, Card3, Card2))
-
-    Card4.play(user1, weatherZone)
-    assertEquals(user1.hand, List(Card5, Card3, Card2))
-    assertEquals(weatherZone.getCards, List(Card4))
-
     Card5.play(user1, closeCombatZone)
-    assertEquals(user1.hand, List(Card3, Card2))
+    assertEquals(user1.hand, List(Card4, Card3, Card2))
     assertEquals(closeCombatZone.getCards, List(Card5, Card1))
 
+    Card4.play(user1, siegeCombatZone)
+    assertEquals(user1.hand, List(Card4, Card3, Card2))
+    Card4.play(user1, weatherZone)
+    assertEquals(user1.hand, List(Card3, Card2))
+    assertEquals(weatherZone.getCards, List(Card4))
+    Card4.play(user1, weatherZone)
+    assertEquals(weatherZone.getCards, List(Card4))
+
+    Card2.play(user1, weatherZone)
+    assertEquals(user1.hand, List(Card3, Card2))
     Card2.play(user1, rangedCombatZone)
     assertEquals(user1.hand, List(Card3))
     assertEquals(rangedCombatZone.getCards, List(Card2))
+    Card2.play(user1, rangedCombatZone)
+    assertEquals(user1.hand, List(Card3))
 
+    Card3.play(user1, closeCombatZone)
+    assertEquals(user1.hand, List(Card3))
     Card3.play(user1, siegeCombatZone)
     assertEquals(user1.hand, List())
     assertEquals(siegeCombatZone.getCards, List(Card3))
+    Card3.play(user1, siegeCombatZone)
+    assertEquals(user1.hand, List())
   }
 
   test("A computer and a card can be created with all the necessary data") {
