@@ -38,10 +38,14 @@ class CloseCombatCard(CardName: String, Classify: String, Power: Int)
 
   def play(user: User, zone: Zone): Unit = {
     if (zone.isInstanceOf[CCBoard]) {
-      zone.addCard(this)
-      user.removeFromHand(this)
+      if (user.removeFromHand(this)) {
+        zone.addCard(this)
+      } else {
+        println("Invalid play! The card is not in the player's hand.")
+      }
     } else {
       println("Invalid play! This card can only be played in Close Combat Zone.")
     }
   }
+
 }

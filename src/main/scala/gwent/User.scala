@@ -84,8 +84,13 @@ class User(val name: String, var gemCounter: Int, private var _deck: List[Cards]
     //}
   //}
 
-  def removeFromHand(card: Cards): Unit = {
-    _hand = _hand.filterNot(_ == card)
+  def removeFromHand(card: Cards): Boolean = {
+    if (hand.contains(card)) {
+      _hand = _hand.filterNot(_ == card)
+      true
+    } else {
+      false
+    }
   }
 
 }

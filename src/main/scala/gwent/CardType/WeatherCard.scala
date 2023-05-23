@@ -36,8 +36,11 @@ class WeatherCard(val CardName: String, val Classify: String) extends Cards with
 
   def play(user: User, zone: Zone): Unit = {
     if (zone.isInstanceOf[WBoard]) {
-      zone.addCard(this)
-      user.removeFromHand(this)
+      if (user.removeFromHand(this)) {
+        zone.addCard(this)
+      } else {
+        println("Invalid play! The card is not in the player's hand.")
+      }
     } else {
       println("Invalid play! This card can only be played in Weather Zone.")
     }

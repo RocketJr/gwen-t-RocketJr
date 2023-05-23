@@ -52,12 +52,20 @@ class UserTest extends FunSuite {
     assertEquals(user2.hand, hand)
   }
 
-  test("A deck and hand needs to be changed when a card is pulled from the deck") {
+  test("A deck and hand needs to be changed when a card is pulled from the deck, and " +
+    "be able to play a card which should be seen") {
     assertEquals(user1.deck, deck1)
     assertEquals(user1.hand, hand)
     user1.DrawCard()
     assertEquals(user1.deck, List(Card2))
     assertEquals(user1.hand, List(Card1, Card4))
+    user1.DrawCard()
+    assertEquals(user1.deck, List())
+    assertEquals(user1.hand, List(Card2, Card1, Card4))
+
+    Card1.play(user1, closeCombatZone)
+    assertEquals(user1.hand, List(Card2, Card4))
+    assertEquals(closeCombatZone.getCards, List(Card1))
   }
 
   test("A computer and a card can be created with all the necessary data") {
@@ -74,15 +82,5 @@ class UserTest extends FunSuite {
   test("The hash code of a User is consistent with equals") {
     assertEquals(new User(name, gems, deck1, hand).##, user1.##)
   }
-
-  test("A player should be able to play a card and you should be able to see it") {
-    val cardIndex = 0
-    assertEquals(user1.deck, deck1)
-    assertEquals(user1.hand, hand)
-    Card1.play(user1, closeCombatZone)
-    assertEquals(user1.hand, List(Card4))
-    assertEquals(closeCombatZone.getCards, List(Card1))
-  }
-
 
 }
