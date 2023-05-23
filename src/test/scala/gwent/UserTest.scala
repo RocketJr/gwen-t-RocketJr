@@ -1,25 +1,35 @@
 package cl.uchile.dcc
 package gwent
 
-import cl.uchile.dcc.gwent.CardType.{Cards, CloseCombatCard}
+import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
+import gwent.Tablero.{Zone, CCBoard, RCBoard, SCBoard, WBoard}
 import munit.FunSuite
 
 class UserTest extends FunSuite {
   val name: String = "Player 1"
-  val pos1: String = "Bottom"
-  val pos2: String = "Top"
   val gems: Int = 3
-  var Card1 = new CloseCombatCard("Sad man", "Melee", 10)
-  var Card2 = new CloseCombatCard("Happy man", "Ranged", 2)
-  val deck: List[Cards] = List(Card1, Card2)
-  val hand: List[Cards] = List()
+  //var Card1 = new CloseCombatCard("Sad man", "Melee", 10)
+  //var Card2 = new CloseCombatCard("Happy man", "Ranged", 2)
+  var Card1 = new CloseCombatCard("Card 1", "Close Combat", 10)
+  var Card2 = new RangedCombatCard("Card 2", "Ranged Combat", 8)
+  var Card3 = new SiegeCombatCard("Card 3", "Siege Combat", 12)
+  var Card4 = new WeatherCard("Card 4", "Weather")
+  val deck1: List[Cards] = List(Card1, Card2)
+  val deck2: List[Cards] = List(Card3)
+  val hand: List[Cards] = List(Card4)
+  val deck3: List[Cards] = List.empty
+
+  var closeCombatZone = new CCBoard()
+  var rangedCombatZone = new RCBoard()
+  var siegeCombatZone = new SCBoard()
+  var weatherZone = new WBoard()
 
   var user1: User = _
   var user2: User = _
 
   override  def beforeEach(context: BeforeEach): Unit = {
-    user1 = new User(name, gems, deck, hand)
-    user2 = new User(name, gems, deck, hand)
+    user1 = new User(name, gems, deck1, hand)
+    user2 = new User(name, gems, deck2, hand)
   }
 
   test("A player needs a name") {
@@ -33,8 +43,8 @@ class UserTest extends FunSuite {
   }
 
   test("A player needs cards on the deck") {
-    assertEquals(user1.deck, deck)
-    assertEquals(user2.deck, deck)
+    assertEquals(user1.deck, deck1)
+    assertEquals(user2.deck, deck2)
   }
 
   test("A player needs cards on the hand") {
@@ -43,25 +53,36 @@ class UserTest extends FunSuite {
   }
 
   test("A deck and hand needs to be changed when a card is pulled from the deck") {
-    assertEquals(user1.deck, deck)
+    assertEquals(user1.deck, deck1)
     assertEquals(user1.hand, hand)
     user1.DrawCard()
     assertEquals(user1.deck, List(Card2))
-    assertEquals(user1.hand, List(Card1))
+    assertEquals(user1.hand, List(Card1, Card4))
   }
 
   test("A computer and a card can be created with all the necessary data") {
-    assertEquals(new User(name, gems, deck, hand), user2)
+    assertEquals(new User(name, gems, deck2, hand), user2)
     assertNotEquals(user1, user2)
-    assertEquals(new CloseCombatCard("Sad man", "Melee", 10), Card1)
+    assertEquals(new CloseCombatCard("Card 1", "Close Combat", 10), Card1)
   }
 
   test("A User and a card has to be different from Another") {
-    assert(!user1.equals("Another"))
-    assert(!Card1.equals("Another"))
+    assert(!user1.equals(Card1))
+    assert(!Card1.equals(user1))
   }
 
   test("The hash code of a User is consistent with equals") {
-    assertEquals(new User(name, gems, deck, hand).##, user1.##)
+    assertEquals(new User(name, gems, deck1, hand).##, user1.##)
   }
+
+  test("A player should be able to play a card and you should be able to see it") {
+    val cardIndex = 0
+    assertEquals(user1.deck, deck1)
+    assertEquals(user1.hand, hand)
+    Card1.play(user1, closeCombatZone)
+    assertEquals(user1.hand, List(Card4))
+    assertEquals(closeCombatZone.getCards, List(Card1))
+  }
+
+
 }

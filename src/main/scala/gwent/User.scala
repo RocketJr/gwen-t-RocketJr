@@ -75,14 +75,14 @@ class User(val name: String, var gemCounter: Int, private var _deck: List[Cards]
     Objects.hash(classOf[User], name, gemCounter, deck, hand)
   }
 
-  def playCard(cardIndex: Int, zone: Zone): Unit = {
-    if (cardIndex >= 0 && cardIndex < hand.length) {
-      val card = hand(cardIndex)
-      card.play(this, zone)
-    } else {
-      println("Invalid card index!")
-    }
-  }
+  // playCard(cardIndex: Int, zone: Zone): Unit = {
+    //if (cardIndex >= 0 && cardIndex < hand.length) {
+      // card = hand(cardIndex)
+      //card.play(this, zone)
+    //} else {
+      //println("Invalid card index!")
+    //}
+  //}
 
   def removeFromHand(card: Cards): Unit = {
     _hand = _hand.filterNot(_ == card)

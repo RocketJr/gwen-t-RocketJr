@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.Tablero
 
-import gwent.CardType.{Cards, SiegeCombatCard}
+import gwent.CardType.Cards
 
 class SCBoard extends AbstractZone {
   private var SC: List[Cards] = List.empty
