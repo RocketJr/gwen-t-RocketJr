@@ -1,6 +1,13 @@
 package cl.uchile.dcc
 package gwent.Tablero
 
+import gwent.CardType.{CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
+
+import gwent.User
+import gwent.CardType.Cards
+
 trait Zone {
-  def jugarCarta(carta: Carta, tablero: Tablero): Unit
+  def addCard(card: Cards): Unit
+
+  def getCards: List[Cards]
 }

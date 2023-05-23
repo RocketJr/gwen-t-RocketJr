@@ -1,6 +1,10 @@
 package cl.uchile.dcc
 package gwent.CardType
 
+import gwent.Tablero.Zone
+
+import gwent.User
+
 /** An abstract class representing a Cards with a name, it's class, and power.
  *
  * @param CardName The name of the Card.
@@ -21,4 +25,7 @@ abstract class AbstractUnitCards protected(val CardName: String, val Classify: S
    * Initially set to the base [[Power]] of the card.
    */
   var currentPower: Int = Power
+
+  /** Method to play the card on a specific zone. */
+  def play(user: User, zone: Zone): Unit
 }

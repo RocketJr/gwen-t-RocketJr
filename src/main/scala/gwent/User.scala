@@ -5,6 +5,8 @@ import gwent.CardType.Cards
 
 import java.util.Objects
 
+import gwent.Tablero.Zone
+
 /** A Player that extends AbstractPlayer and takes cards from the deck to the hand.
  *
  * @param name The name of the player.
@@ -72,4 +74,18 @@ class User(val name: String, var gemCounter: Int, private var _deck: List[Cards]
   override def hashCode: Int = {
     Objects.hash(classOf[User], name, gemCounter, deck, hand)
   }
+
+  def playCard(cardIndex: Int, zone: Zone): Unit = {
+    if (cardIndex >= 0 && cardIndex < hand.length) {
+      val card = hand(cardIndex)
+      card.play(this, zone)
+    } else {
+      println("Invalid card index!")
+    }
+  }
+
+  def removeFromHand(card: Cards): Unit = {
+    _hand = _hand.filterNot(_ == card)
+  }
+
 }
