@@ -14,7 +14,7 @@ import gwent.User
  * @author Leonardo Rikhardsson
  *
  * @since 1.0.1
- * @version 1.0.0
+ * @version 1.2.3
  */
 
 abstract class AbstractUnitCards protected(val CardName: String, val Classify: String, val Power: Int)

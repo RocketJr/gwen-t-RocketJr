@@ -13,7 +13,7 @@ import gwent.User
  * @constructor Creates a new card with a given name and type.
  * @author Leonardo Rikhardsson
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.2.3
  */
 
 class WeatherCard(val CardName: String, val Classify: String) extends Cards with Equals {
@@ -34,6 +34,13 @@ class WeatherCard(val CardName: String, val Classify: String) extends Cards with
     Objects.hash(classOf[WeatherCard], CardName, Classify)
   }
 
+
+  /** Plays a WeatherCard and removes it from the player's hand
+   *
+   * Removes the desired card from the player's hand so it can be played on the Weather Board
+   * This is achieved by filtering the hand to get the card that needs to be removed, and only it is done so
+   * if the card belongs to the Weather Board. If not then it will print Invalid plays.
+   */
   def play(user: User, zone: Zone): Unit = {
     if (zone.isInstanceOf[WBoard]) {
       if (user.removeFromHand(this)) {

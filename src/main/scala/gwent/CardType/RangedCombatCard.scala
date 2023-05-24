@@ -14,7 +14,7 @@ import gwent.User
  * @constructor Creates a new card with a given name and classification.
  * @author Leonardo Rikhardsson
  * @since 1.1.0
- * @version 1.0.0
+ * @version 1.2.3
  */
 
 class RangedCombatCard (CardName: String, Classify: String, Power: Int)
@@ -36,6 +36,13 @@ class RangedCombatCard (CardName: String, Classify: String, Power: Int)
     Objects.hash(classOf[RangedCombatCard], CardName, Classify, Power)
   }
 
+
+  /** Plays a RangedCombatCard and removes it from the player's hand
+   *
+   * Removes the desired card from the player's hand so it can be played on the RangedCombat Board
+   * This is achieved by filtering the hand to get the card that needs to be removed, and only it is done so
+   * if the card belongs to the RangedCombat Board. If not then it will print Invalid plays.
+   */
   def play(user: User, zone: Zone): Unit = {
     if (zone.isInstanceOf[RCBoard]) {
       if (user.removeFromHand(this)) {

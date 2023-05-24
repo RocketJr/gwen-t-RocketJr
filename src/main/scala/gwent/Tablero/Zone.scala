@@ -5,6 +5,14 @@ import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard
 
 import gwent.User
 
+/** A trait representing the board zone.
+ *
+ * @author Leonardo Rikhardsson
+ *
+ * @since 1.2.3
+ * @version 1.2.3
+ */
+
 trait Zone {
 
   def addCard(card: Cards): Unit

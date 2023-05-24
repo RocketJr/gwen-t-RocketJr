@@ -75,15 +75,12 @@ class User(val name: String, var gemCounter: Int, private var _deck: List[Cards]
     Objects.hash(classOf[User], name, gemCounter, deck, hand)
   }
 
-  // playCard(cardIndex: Int, zone: Zone): Unit = {
-    //if (cardIndex >= 0 && cardIndex < hand.length) {
-      // card = hand(cardIndex)
-      //card.play(this, zone)
-    //} else {
-      //println("Invalid card index!")
-    //}
-  //}
 
+  /** Removes a card from the player's hand
+   *
+   * Removes the desired card from the player's hand
+   * This is achieved by filtering the hand to get the card that needs to be removed.
+   */
   def removeFromHand(card: Cards): Boolean = {
     if (hand.contains(card)) {
       _hand = _hand.filterNot(_ == card)

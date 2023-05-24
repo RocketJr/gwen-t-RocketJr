@@ -14,7 +14,7 @@ import gwent.User
  * @constructor Creates a new card with a given name and classification.
  * @author Leonardo Rikhardsson
  * @since 1.1.0
- * @version 1.0.0
+ * @version 1.2.3
  */
 
 class SiegeCombatCard (CardName: String, Classify: String, Power: Int)
@@ -36,6 +36,13 @@ class SiegeCombatCard (CardName: String, Classify: String, Power: Int)
     Objects.hash(classOf[SiegeCombatCard], CardName, Classify, Power)
   }
 
+
+  /** Plays a SiegeCombatCard and removes it from the player's hand
+   *
+   * Removes the desired card from the player's hand so it can be played on the SiegeCombat Board
+   * This is achieved by filtering the hand to get the card that needs to be removed, and only it is done so
+   * if the card belongs to the SiegeCombat Board. If not then it will print Invalid plays.
+   */
   def play(user: User, zone: Zone): Unit = {
     if (zone.isInstanceOf[SCBoard]) {
       if (user.removeFromHand(this)) {
