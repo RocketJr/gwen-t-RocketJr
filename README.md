@@ -14,3 +14,9 @@ This project's goal is to create a (simplified) clone of the
 ---
 
 **The rest of the documentation is left for the users of this template to complete**
+
+Para la entrega parcial 1, empece realizando los distintos tests para los elementos basicos del juego: Jugador y Carta
+Creando las distintas variables usadas en la clase player, como el nombre, su posicion, las gemas(vidas), cartas en
+el mazo y las cartas en su mano.
+Ademas se crearon 2 funciones principales a la hora del juego, la primera de sacar carta de un mazo, donde se remueven
+las cartas del mazo y se agregan a la mano. La otra funcion descuenta las cartas de una mano cuando son jugadas.
