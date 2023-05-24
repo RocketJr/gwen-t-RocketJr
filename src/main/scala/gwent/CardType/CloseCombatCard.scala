@@ -47,5 +47,5 @@ class CloseCombatCard(CardName: String, Classify: String, Power: Int)
       println("Invalid play! This card can only be played in Close Combat Zone.")
     }
   }
-  
+
 }
