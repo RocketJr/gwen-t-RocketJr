@@ -5,6 +5,8 @@ import gwent.Tablero.Zone
 
 import gwent.User
 
+import gwent.Board
+
 /** A trait representing a Cards with a name, it's class, and power.
  *
  * @author Leonardo Rikhardsson
@@ -22,5 +24,5 @@ trait Cards {
   //def playInZone(user: User, zone: Int): Unit
 
   /** Method to play the card on a specific zone. */
-  def play(user: User, zone: Zone): Unit
+  def playOnBoard(board: Board): Unit
 }

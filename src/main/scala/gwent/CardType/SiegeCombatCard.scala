@@ -7,6 +7,8 @@ import gwent.Tablero.{Zone, CCBoard, RCBoard, SCBoard, WBoard}
 
 import gwent.User
 
+import gwent.Board
+
 /**
  * @param CardName The name of the Card.
  * @param Classify The classification of the card.
@@ -43,16 +45,8 @@ class SiegeCombatCard (CardName: String, Classify: String, Power: Int)
    * This is achieved by filtering the hand to get the card that needs to be removed, and only it is done so
    * if the card belongs to the SiegeCombat Board. If not then it will print Invalid plays.
    */
-  def play(user: User, zone: Zone): Unit = {
-    if (zone.isInstanceOf[SCBoard]) {
-      if (user.removeFromHand(this)) {
-        zone.addCard(this)
-      } else {
-        println("Invalid play! The card is not in the player's hand.")
-      }
-    } else {
-      println("Invalid play! This card can only be played in Siege Combat Zone.")
-    }
+  override def playOnBoard(board: Board): Unit = {
+    board.playSiegeCombatCard(this)
   }
 
 }

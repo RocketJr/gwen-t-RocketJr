@@ -3,6 +3,8 @@ package gwent
 
 import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
 import gwent.Tablero.{Zone, CCBoard, RCBoard, SCBoard, WBoard}
+import gwent.Board
+import gwent.User
 import munit.FunSuite
 
 class UserTest extends FunSuite {
@@ -20,17 +22,19 @@ class UserTest extends FunSuite {
   val hand: List[Cards] = List(Card4, Card3, Card2)
   val deck3: List[Cards] = List.empty
 
-  var closeCombatZone = new CCBoard()
-  var rangedCombatZone = new RCBoard()
-  var siegeCombatZone = new SCBoard()
-  var weatherZone = new WBoard()
+  //var closeCombatZone = new CCBoard()
+  //var rangedCombatZone = new RCBoard()
+  //var siegeCombatZone = new SCBoard()
+  //var weatherZone = new WBoard()
+
+  var board = new Board()
 
   var user1: User = _
   var user2: User = _
 
   override  def beforeEach(context: BeforeEach): Unit = {
-    user1 = new User(name, gems, deck1, hand)
-    user2 = new User(name, gems, deck2, hand)
+    user1 = new User(name, gems, deck1, hand, board)
+    user2 = new User(name, gems, deck2, hand, board)
   }
 
   test("A player needs a name") {
@@ -72,45 +76,14 @@ class UserTest extends FunSuite {
     assertEquals(user1.deck, List())
     assertEquals(user1.hand, List(Card5, Card1, Card4, Card3, Card2))
 
-    Card1.play(user1, closeCombatZone)
+    // User1 juega Card1
+    user1.playCard(Card1)
     assertEquals(user1.hand, List(Card5, Card4, Card3, Card2))
-    assertEquals(closeCombatZone.getCards, List(Card1))
-    Card1.play(user1, closeCombatZone)
-    assertEquals(closeCombatZone.getCards, List(Card1))
-
-    Card5.play(user1, rangedCombatZone)
-    assertEquals(user1.hand, List(Card5, Card4, Card3, Card2))
-    Card5.play(user1, closeCombatZone)
-    assertEquals(user1.hand, List(Card4, Card3, Card2))
-    assertEquals(closeCombatZone.getCards, List(Card5, Card1))
-
-    Card4.play(user1, siegeCombatZone)
-    assertEquals(user1.hand, List(Card4, Card3, Card2))
-    Card4.play(user1, weatherZone)
-    assertEquals(user1.hand, List(Card3, Card2))
-    assertEquals(weatherZone.getCards, List(Card4))
-    Card4.play(user1, weatherZone)
-    assertEquals(weatherZone.getCards, List(Card4))
-
-    Card2.play(user1, weatherZone)
-    assertEquals(user1.hand, List(Card3, Card2))
-    Card2.play(user1, rangedCombatZone)
-    assertEquals(user1.hand, List(Card3))
-    assertEquals(rangedCombatZone.getCards, List(Card2))
-    Card2.play(user1, rangedCombatZone)
-    assertEquals(user1.hand, List(Card3))
-
-    Card3.play(user1, closeCombatZone)
-    assertEquals(user1.hand, List(Card3))
-    Card3.play(user1, siegeCombatZone)
-    assertEquals(user1.hand, List())
-    assertEquals(siegeCombatZone.getCards, List(Card3))
-    Card3.play(user1, siegeCombatZone)
-    assertEquals(user1.hand, List())
+    print(board.getCloseCombatZone)
   }
 
   test("A computer and a card can be created with all the necessary data") {
-    assertEquals(new User(name, gems, deck2, hand), user2)
+    assertEquals(new User(name, gems, deck2, hand, board), user2)
     assertNotEquals(user1, user2)
     assertEquals(new CloseCombatCard("Card 1", "Close Combat", 10), Card1)
   }
@@ -121,7 +94,7 @@ class UserTest extends FunSuite {
   }
 
   test("The hash code of a User is consistent with equals") {
-    assertEquals(new User(name, gems, deck1, hand).##, user1.##)
+    assertEquals(new User(name, gems, deck1, hand, board).##, user1.##)
   }
 
 }

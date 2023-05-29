@@ -7,6 +7,8 @@ import java.util.Objects
 
 import gwent.Tablero.Zone
 
+import gwent.Board
+
 /** A Player that extends AbstractPlayer and takes cards from the deck to the hand.
  *
  * @param name The name of the player.
@@ -22,7 +24,7 @@ import gwent.Tablero.Zone
  */
 
 class User(val name: String, var gemCounter: Int, private var _deck: List[Cards],
-           private var _hand: List[Cards]) extends Equals {
+           private var _hand: List[Cards], var board: Board) extends Equals {
 
   /** Accessor method for the player's deck */
   def deck: List[Cards] = _deck
@@ -81,13 +83,18 @@ class User(val name: String, var gemCounter: Int, private var _deck: List[Cards]
    * Removes the desired card from the player's hand
    * This is achieved by filtering the hand to get the card that needs to be removed.
    */
-  def removeFromHand(card: Cards): Boolean = {
+  private def removeFromHand(card: Cards): Boolean = {
     if (hand.contains(card)) {
       _hand = _hand.filterNot(_ == card)
       true
     } else {
       false
     }
+  }
+
+  def playCard(card: Cards): Unit = {
+    board.playCard(card)
+    removeFromHand(card)
   }
 
 }
