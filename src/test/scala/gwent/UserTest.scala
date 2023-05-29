@@ -10,22 +10,16 @@ import munit.FunSuite
 class UserTest extends FunSuite {
   val name: String = "Player 1"
   val gems: Int = 3
-  //var Card1 = new CloseCombatCard("Sad man", "Melee", 10)
-  //var Card2 = new CloseCombatCard("Happy man", "Ranged", 2)
   var Card1 = new CloseCombatCard("Card 1", "Close Combat", 10)
   var Card2 = new RangedCombatCard("Card 2", "Ranged Combat", 8)
   var Card3 = new SiegeCombatCard("Card 3", "Siege Combat", 12)
   var Card4 = new WeatherCard("Card 4", "Weather")
   var Card5 = new CloseCombatCard("Card 5", "Close Combat", 123)
+  var Card6 = new WeatherCard("Card 6", "Weather")
   val deck1: List[Cards] = List(Card1, Card5)
   val deck2: List[Cards] = List(Card3, Card5, Card1, Card2)
-  val hand: List[Cards] = List(Card4, Card3, Card2)
+  val hand: List[Cards] = List(Card4, Card3, Card2, Card6)
   val deck3: List[Cards] = List.empty
-
-  //var closeCombatZone = new CCBoard()
-  //var rangedCombatZone = new RCBoard()
-  //var siegeCombatZone = new SCBoard()
-  //var weatherZone = new WBoard()
 
   var board = new Board()
 
@@ -71,15 +65,35 @@ class UserTest extends FunSuite {
     assertEquals(user1.hand, hand)
     user1.DrawCard()
     assertEquals(user1.deck, List(Card5))
-    assertEquals(user1.hand, List(Card1, Card4, Card3, Card2))
+    assertEquals(user1.hand, List(Card1, Card4, Card3, Card2, Card6))
     user1.DrawCard()
     assertEquals(user1.deck, List())
-    assertEquals(user1.hand, List(Card5, Card1, Card4, Card3, Card2))
+    assertEquals(user1.hand, List(Card5, Card1, Card4, Card3, Card2, Card6))
 
-    // User1 juega Card1
     user1.playCard(Card1)
-    assertEquals(user1.hand, List(Card5, Card4, Card3, Card2))
-    print(board.getCloseCombatZone)
+    assertEquals(user1.hand, List(Card5, Card4, Card3, Card2, Card6))
+    assertEquals(board.getCloseCombatZone, List(Card1))
+
+    user1.playCard(Card3)
+    assertEquals(user1.hand, List(Card5, Card4, Card2, Card6))
+    assertEquals(board.getCloseCombatZone, List(Card1))
+    assertEquals(board.getSiegeCombatZone, List(Card3))
+
+    user1.playCard(Card2)
+    user1.playCard(Card5)
+    user1.playCard(Card4)
+    assertEquals(user1.hand, List(Card6))
+    assertEquals(board.getRangedCombatZone, List(Card2))
+    assertEquals(board.getCloseCombatZone, List(Card5, Card1))
+    assertEquals(board.getWeatherZone, Option(Card4))
+
+    user1.playCard(Card5)
+    assertEquals(user1.hand, List(Card6))
+    assertEquals(board.getCloseCombatZone, List(Card5, Card1))
+
+    user1.playCard(Card6)
+    assertEquals(user1.hand, List())
+    assertEquals(board.getWeatherZone, Option(Card6))
   }
 
   test("A computer and a card can be created with all the necessary data") {

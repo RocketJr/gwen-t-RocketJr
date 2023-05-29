@@ -92,9 +92,13 @@ class User(val name: String, var gemCounter: Int, private var _deck: List[Cards]
     }
   }
 
-  def playCard(card: Cards): Unit = {
-    board.playCard(card)
-    removeFromHand(card)
+  def playCard(card: Cards): Boolean = {
+    if (removeFromHand(card)) {
+      board.playCard(card)
+      true
+    } else {
+      false
+    }
   }
 
 }
