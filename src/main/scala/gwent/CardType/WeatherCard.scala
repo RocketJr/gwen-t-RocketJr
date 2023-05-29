@@ -35,11 +35,10 @@ class WeatherCard(val CardName: String, val Classify: String) extends Cards with
   }
 
 
-  /** Plays a WeatherCard and removes it from the player's hand
+  /** Plays a WeatherCard on the specific board
    *
-   * Removes the desired card from the player's hand so it can be played on the Weather Board
-   * This is achieved by filtering the hand to get the card that needs to be removed, and only it is done so
-   * if the card belongs to the Weather Board. If not then it will print Invalid plays.
+   * Plays a Card on the board and calls the WeatherCard function to later play on that zone
+   * This is achieved by using double dispatch, to filter the necessary Card Type
    */
   override def playOnBoard(board: Board): Unit = {
     board.playWeatherCard(this)
