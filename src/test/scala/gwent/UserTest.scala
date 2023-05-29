@@ -2,9 +2,7 @@ package cl.uchile.dcc
 package gwent
 
 import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
-import gwent.Tablero.{Zone, CCBoard, RCBoard, SCBoard, WBoard}
-import gwent.Board
-import gwent.User
+
 import munit.FunSuite
 
 class UserTest extends FunSuite {

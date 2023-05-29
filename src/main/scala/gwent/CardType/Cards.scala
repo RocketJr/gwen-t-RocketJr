@@ -1,8 +1,6 @@
 package cl.uchile.dcc
 package gwent.CardType
 
-import gwent.Tablero.Zone
-
 import gwent.User
 
 import gwent.Board
@@ -23,6 +21,6 @@ trait Cards {
 
   //def playInZone(user: User, zone: Int): Unit
 
-  /** Method to play the card on a specific zone. */
+  /** Method to play the card on the board. */
   def playOnBoard(board: Board): Unit
 }

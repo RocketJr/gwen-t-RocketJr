@@ -1,8 +1,6 @@
 package cl.uchile.dcc
 package gwent.CardType
 
-import gwent.Tablero.Zone
-
 import gwent.User
 
 import gwent.Board
@@ -28,6 +26,6 @@ abstract class AbstractUnitCards protected(val CardName: String, val Classify: S
    */
   var currentPower: Int = Power
 
-  /** Method to play the card on a specific zone. */
+  /** Method to play the card on the board. */
   override def playOnBoard(board: Board): Unit
 }

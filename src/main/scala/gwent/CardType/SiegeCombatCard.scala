@@ -3,8 +3,6 @@ package gwent.CardType
 
 import java.util.Objects
 
-import gwent.Tablero.{Zone, CCBoard, RCBoard, SCBoard, WBoard}
-
 import gwent.User
 
 import gwent.Board

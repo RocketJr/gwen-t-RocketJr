@@ -5,8 +5,6 @@ import gwent.CardType.Cards
 
 import java.util.Objects
 
-import gwent.Tablero.Zone
-
 import gwent.Board
 
 /** A Player that extends AbstractPlayer and takes cards from the deck to the hand.
