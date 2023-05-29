@@ -7,14 +7,21 @@ import gwent.User
 
 import gwent.Board
 
-/**
+/** Class representing a close combat unit card in the Gwen't game.
+ *
+ * A `CloseCombatCard` is a type of [[AbstractUnitCards]].
+ * These cards represent troops that engage in close combat on the battlefield.
+ * As per the game's rules, these cards can only be placed in the close combat zone.
+ *
+ * @constructor Creates a new `AbstractUnitCard` with a specified name, classification, and
+ *              power.
  * @param CardName The name of the Card.
  * @param Classify The classification of the card.
  * @param Power The power of the Card.
- * @constructor Creates a new card with a given name and classification.
+ *
  * @author Leonardo Rikhardsson
  * @since 1.0.0
- * @version 1.2.3
+ * @version 1.3.0
  */
 
 class CloseCombatCard(CardName: String, Classify: String, Power: Int)
@@ -38,7 +45,7 @@ class CloseCombatCard(CardName: String, Classify: String, Power: Int)
 
 
   /** Plays a CloseCombatCard on the specific board
-   * 
+   *
    * Plays a Card on the board and calls the CloseCombatCard function to later play on that zone
    * This is achieved by using double dispatch, to filter the necessary Card Type
    */

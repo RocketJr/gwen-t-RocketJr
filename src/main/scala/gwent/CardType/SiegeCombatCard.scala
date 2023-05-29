@@ -7,14 +7,20 @@ import gwent.User
 
 import gwent.Board
 
-/**
+/** Class representing a siege combat unit card in the Gwen't game.
+ *
+ * A `SiegeCombatCard` is a type of [[AbstractUnitCards]].
+ * These cards represent siege machinery used on the battlefield.
+ * As per the game's rules, these cards can only be placed in the siege combat zone.
+ *
+ * @constructor create a new siege combat card with name, classification, and power.
  * @param CardName The name of the Card.
  * @param Classify The classification of the card.
  * @param Power The power of the Card.
- * @constructor Creates a new card with a given name and classification.
+ *              
  * @author Leonardo Rikhardsson
  * @since 1.1.0
- * @version 1.2.3
+ * @version 1.3.0
  */
 
 class SiegeCombatCard (CardName: String, Classify: String, Power: Int)
