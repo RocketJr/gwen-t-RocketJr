@@ -3,6 +3,17 @@ package gwent
 
 import gwent.CardType.WeatherCard
 
+/** Class representing The Weather Zone in the Gwen't game.
+ *
+ * The WeatherZone is the space where a single WeatherCard will be played by both players.
+ *
+ * @constructor Create a new Zone for the WeatherCards.
+ *
+ * @author Leonardo Rikhardsson
+ * @since 1.3.0
+ * @version 1.0.0
+ */
+
 class WeatherZone {
   /** The Zone for Weather Cards.
    *
