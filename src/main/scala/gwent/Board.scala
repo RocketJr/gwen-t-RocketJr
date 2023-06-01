@@ -14,7 +14,7 @@ import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard
  * @version 1.0.0
  */
 
-class Board {
+class Board (val sharedWeatherZone: WeatherZone){
   /** The Zone for Close Combat Cards.
    *
    * This variable stores the CloseCombatCards played in a List.
@@ -33,11 +33,6 @@ class Board {
    */
   private var siegeCombatZone: List[SiegeCombatCard] = List.empty
 
-  /** The Zone for Weather Cards.
-   *
-   * This variable stores the WeatherCards played in an Option.
-   */
-  private var weatherZone: Option[WeatherCard] = None
 
   /** Plays the player's card on the CloseCombatZone.
    *
@@ -72,7 +67,7 @@ class Board {
    * This is achieved by using double dispatch, to filter the options depending on the zone it is being played.
    */
   def playWeatherCard(card: WeatherCard): Unit = {
-    weatherZone = Some(card)
+    sharedWeatherZone.addWeatherCard(card)
   }
 
   /** Shows the cards in the CloseCombatZone.
@@ -101,5 +96,22 @@ class Board {
    * Displays a single card from the WeatherZone which where played with playWeatherCard
    * This is achieved by showing the Option of the card.
    */
-  def getWeatherZone: Option[WeatherCard] = weatherZone
+  def getWeatherZone: Option[WeatherCard] = sharedWeatherZone.getWeatherCard
+
+  // Setters
+  def setCloseCombatZone(cards: List[CloseCombatCard]): Unit = {
+    closeCombatZone = cards
+  }
+
+  def setRangedCombatZone(cards: List[RangedCombatCard]): Unit = {
+    rangedCombatZone = cards
+  }
+
+  def setSiegeCombatZone(cards: List[SiegeCombatCard]): Unit = {
+    siegeCombatZone = cards
+  }
+
+  def setWeatherZone(card: Option[WeatherCard]): Unit = {
+    sharedWeatherZone.setWeatherCard(card)
+  }
 }

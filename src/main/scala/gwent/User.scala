@@ -113,4 +113,6 @@ class User(val name: String, var gemCounter: Int, private var _deck: List[Cards]
     }
   }
 
+  /** Returns the player's board */
+  def getBoard: Board = board
 }
