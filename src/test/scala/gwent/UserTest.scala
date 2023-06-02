@@ -19,11 +19,11 @@ class UserTest extends FunSuite {
   val hand: List[Cards] = List(Card4, Card3, Card2, Card6)
   val deck3: List[Cards] = List.empty
 
-  val zone1: WeatherZone = WeatherZone.getInstance()
-  val zone2: WeatherZone = WeatherZone.getInstance()
+  //val zone1: WeatherZone = WeatherZone.getInstance()
+  //val zone2: WeatherZone = WeatherZone.getInstance()
 
-  var board1 = new Board(zone1)
-  var board2 = new Board(zone2)
+  var board1 = new Board()
+  var board2 = new Board()
 
   var user1: User = _
   var user2: User = _
@@ -105,9 +105,6 @@ class UserTest extends FunSuite {
     // Son iguales como la zona es la misma
     assertEquals(board2.getWeatherZone, Option(Card4))
     assertEquals(board1.getWeatherZone, Option(Card4))
-    // Lo mismo que decir
-    assertEquals(zone1.getWeatherCard, Option(Card4))
-    assertEquals(zone2.getWeatherCard, Option(Card4))
     assertEquals(user2.hand, List(Card5, Card3, Card2, Card6))
 
     user2.playCard(Card5)
@@ -123,17 +120,12 @@ class UserTest extends FunSuite {
     val TestCardW = new WeatherCard("T1", "Weather")
     val newWeatherCard = Some(TestCardW)
 
-    assertEquals(zone1.getWeatherCard, Option(Card4))
-    // Esto es lo mismo que decir:
-    // assertEquals(board1.getWeatherZone, Option(Card4))
+    assertEquals(board1.getWeatherZone, Option(Card4))
     board1.setWeatherZone(newWeatherCard)
-    // Esto es lo mismo que decir:
-    // zone1.setWeatherCard(newWeatherCard)
+
     assertEquals(board1.getWeatherZone, Option(TestCardW))
     assertEquals(board2.getWeatherZone, Option(TestCardW))
-    assertEquals(zone1.getWeatherCard, Option(TestCardW))
 
-    assertEquals(zone1.getWeatherCard, zone2.getWeatherCard)
     assertEquals(board1.getWeatherZone, board2.getWeatherZone)
 
     val TestCardC1 = new CloseCombatCard("T1C", "Close Combat", 10)

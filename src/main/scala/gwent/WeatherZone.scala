@@ -19,7 +19,7 @@ class WeatherZone {
    *
    * This variable stores the WeatherCards played in an Option.
    */
-  private var instance: Option[WeatherCard] = None
+  private var weatherZone: Option[WeatherCard] = None
 
   /** Plays the player's card on the WeatherZone.
    *
@@ -27,7 +27,7 @@ class WeatherZone {
    * This is achieved by using double dispatch, to filter the options depending on the zone it is being played.
    */
   def addWeatherCard(card: WeatherCard): Unit = {
-    instance = Some(card)
+    weatherZone = Some(card)
   }
 
   /** Shows the single card in the WeatherZone.
@@ -35,7 +35,7 @@ class WeatherZone {
    * Displays a single card from the WeatherZone which where played with playWeatherCard
    * This is achieved by showing the Option of the card.
    */
-  def getWeatherCard: Option[WeatherCard] = instance
+  def getWeatherCard: Option[WeatherCard] = weatherZone
 
   /** Sets the card in the WeatherZone.
    *
@@ -43,7 +43,7 @@ class WeatherZone {
    * replaces the current card in the zone.
    */
   def setWeatherCard(card: Option[WeatherCard]): Unit = {
-    instance = card
+    weatherZone = card
   }
 }
 

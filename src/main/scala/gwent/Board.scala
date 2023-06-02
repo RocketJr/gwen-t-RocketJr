@@ -8,14 +8,14 @@ import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard
  * The board is the space where the cards will be played. Each Card type has it designated Zone on the board.
  *
  * @constructor Create a new board with the different zones.
- * @param sharedWeatherZone The Zone the Weather Card will be played.
  *
  * @author Leonardo Rikhardsson
  * @since 1.3.0
  * @version 1.0.0
  */
 
-class Board (val sharedWeatherZone: WeatherZone){
+class Board {
+  private val sharedWeatherZone: WeatherZone = WeatherZone.getInstance()
   /** The Zone for Close Combat Cards.
    *
    * This variable stores the CloseCombatCards played in a List.
