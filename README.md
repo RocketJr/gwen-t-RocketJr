@@ -46,7 +46,7 @@ Aunque para mostrar la carta en la zona clima también se puede usar:
 zone1.getWeatherCard (La función que se hace llamar si se invoca la clase board primero)
 
 Y como se puede ver puse 2 zonas clima, esto simplemente para demostrar que con el uso de un Singleton, hace que ambas
-zonas clima sean exactamente iguales (Eso es solo para uso referencial). Toda esta materiua vista en Clases.
+zonas clima sean exactamente iguales (Eso es solo para uso referencial). Toda esta materia vista en Clases.
 
 Ahora cómo fue posible hacer que un jugador pueda jugar una carta, primero se crearon las funciones
 removeFromHand que remueve una carta específica de la mano, y este es usado en la segunda función para jugar una carta.
