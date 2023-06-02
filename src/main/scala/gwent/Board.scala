@@ -99,19 +99,38 @@ class Board (val sharedWeatherZone: WeatherZone){
    */
   def getWeatherZone: Option[WeatherCard] = sharedWeatherZone.getWeatherCard
 
-  // Setters
+  /** Sets the cards in the CloseCombatZone.
+   *
+   * Sets the cards in the Siege Combat Zone of the board. The provided list of `CloseCombatCard`
+   * replaces the current cards in the zone.
+   */
   def setCloseCombatZone(cards: List[CloseCombatCard]): Unit = {
     closeCombatZone = cards
   }
 
+  /** Sets the card in the RangedCombatZone.
+   *
+   * Sets the cards in the Siege Combat Zone of the board. The provided list of `RangedCombatCard`
+   * replaces the current cards in the zone.
+   */
   def setRangedCombatZone(cards: List[RangedCombatCard]): Unit = {
     rangedCombatZone = cards
   }
 
+  /** Sets the card in the SiegeCombatZone.
+   *
+   * Sets the cards in the Siege Combat Zone of the board. The provided list of `SiegeCombatCard`
+   * replaces the current cards in the zone.
+   */
   def setSiegeCombatZone(cards: List[SiegeCombatCard]): Unit = {
     siegeCombatZone = cards
   }
 
+  /** Sets the card in the WeatherZone.
+   *
+   * Sets the card in the Weather Zone of the board. The provided `Option` of `WeatherCard`
+   * replaces the current card in the zone.
+   */
   def setWeatherZone(card: Option[WeatherCard]): Unit = {
     sharedWeatherZone.setWeatherCard(card)
   }

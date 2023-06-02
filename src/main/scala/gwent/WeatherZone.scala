@@ -37,7 +37,11 @@ class WeatherZone {
    */
   def getWeatherCard: Option[WeatherCard] = instance
 
-  // Setter
+  /** Sets the card in the WeatherZone.
+   *
+   * Sets the card in the Weather Zone of the board. The provided `Option` of `WeatherCard`
+   * replaces the current card in the zone.
+   */
   def setWeatherCard(card: Option[WeatherCard]): Unit = {
     instance = card
   }
