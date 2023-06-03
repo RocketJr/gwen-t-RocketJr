@@ -38,6 +38,16 @@ class User(val name: String, var gemCounter: Int, private var _deck: List[Cards]
   /** Accessor method for the player's hand */
   def hand: List[Cards] = _hand
 
+  /** Setter method for the player's deck */
+  def deckSet(decks: List[Cards]): Unit = {
+    _deck = decks
+  }
+
+  /** Setter method for the player's hand */
+  def handSet(hands: List[Cards]): Unit = {
+    _hand = hands
+  }
+
   /** Draws a card from the deck and adds it to the hand.
    *
    * The top card from the deck is removed and added to the player's hand.
