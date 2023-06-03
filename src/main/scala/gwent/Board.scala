@@ -15,7 +15,12 @@ import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard
  */
 
 class Board {
+  /** The Zone for Weather Cards.
+   *
+   * This variable stores the WeatherCards played in an Option.
+   */
   private val sharedWeatherZone: WeatherZone = WeatherZone.getInstance()
+
   /** The Zone for Close Combat Cards.
    *
    * This variable stores the CloseCombatCards played in a List.
