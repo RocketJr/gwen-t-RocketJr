@@ -3,7 +3,7 @@ package gwent.CardType
 
 import gwent.User
 
-import gwent.Board
+import gwent.Tablero.Board
 
 /** Abstract class representing a unit card in the Gwen't game.
  *
@@ -16,7 +16,6 @@ import gwent.Board
  * @param CardName The name of the Card.
  * @param Classify The class of the Card.
  * @param Power The power of the Card.
- *
  * @author Leonardo Rikhardsson
  * @since 1.0.1
  * @version 1.3.0

@@ -2,10 +2,9 @@ package cl.uchile.dcc
 package gwent.CardType
 
 import java.util.Objects
-
 import gwent.User
 
-import gwent.Board
+import gwent.Tablero.Board
 
 /** Class representing a weather card in the Gwen't game.
  *
@@ -16,7 +15,6 @@ import gwent.Board
  * @constructor Creates a new `WeatherCard` with a specified name and classification.
  * @param CardName The name of the Card.
  * @param Classify The classification of the card.
- *
  * @author Leonardo Rikhardsson
  * @since 1.0.0
  * @version 1.3.0

@@ -3,9 +3,9 @@ package gwent
 
 import gwent.CardType.Cards
 
-import java.util.Objects
+import gwent.Tablero.Board
 
-import gwent.Board
+import java.util.Objects
 
 /** Class representing a player in the Gwen't game.
  *
@@ -23,7 +23,6 @@ import gwent.Board
  * @param _deck The amount of cards the player has on the deck.
  * @param _hand The amount of cards the player has on the hand.
  * @param board The board represented in the game.
- *
  * @author Leonardo Rikhardsson
  * @since 1.0.1
  * @version 1.3.0
@@ -31,6 +30,12 @@ import gwent.Board
 
 class User(val name: String, var gemCounter: Int, private var _deck: List[Cards],
            private var _hand: List[Cards], var board: Board) extends Equals {
+
+  def NegativeGems(): Unit = {
+    if (gemCounter < 0) {
+      throw new InvalidGem("No puede iniciar con vidas negativas")
+    }
+  }
 
   /** Accessor method for the player's deck */
   def deck: List[Cards] = _deck

@@ -21,6 +21,10 @@ el mazo y las cartas en su mano.
 Además se crearon 2 funciones principales a la hora del juego, la primera de sacar carta de un mazo, donde se remueven
 las cartas del mazo y se agregan a la mano. La otra función descuenta las cartas de una mano cuando son jugadas.
 
+# Tarea 2
+
+---
+
 En la entrega final 2, se crearon 2 clases nuevas, la clase Board y WeatherZone. En esta clase Board, se crearon
 distintas variables que representan las distintas zonas del tablero. En donde en cada una de ellas se puede jugar una
 carta, mostrar su contenido y usar los setters para dejar una zona con contenido predeterminado. Aquí la excepción de
@@ -46,3 +50,8 @@ y la carta que escogimos. La función playOnBoard es implementada en todas las c
 board/zona, se usa una función playOnBoard. Cuando esté en su función correcta esta llama a la última función, en
 la clase board la cual termina agregando la carta jugada en su respectiva zona. Toda esta parte es lo que 
 consideraríamos Double Dispatch.
+
+## Diagrama de estados
+
+//![Diagrama de estados](Fotos/diagrama-estados.png)
+

@@ -2,10 +2,9 @@ package cl.uchile.dcc
 package gwent.CardType
 
 import java.util.Objects
-
 import gwent.User
 
-import gwent.Board
+import gwent.Tablero.Board
 
 /** Class representing a ranged combat unit card in the Gwen't game.
  *
@@ -17,8 +16,7 @@ import gwent.Board
  *              power.
  * @param CardName The name of the Card.
  * @param Classify The classification of the card.
- * @param Power The power of the Card.
- *              
+ * @param Power The power of the Card.              
  * @author Leonardo Rikhardsson
  * @since 1.1.0
  * @version 1.3.0

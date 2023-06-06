@@ -3,7 +3,7 @@ package gwent.CardType
 
 import gwent.User
 
-import gwent.Board
+import gwent.Tablero.Board
 
 /** Trait representing a card in the Gwen't game.
  *
