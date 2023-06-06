@@ -31,6 +31,10 @@ import java.util.Objects
 class User(val name: String, var gemCounter: Int, private var _deck: List[Cards],
            private var _hand: List[Cards], var board: Board) extends Equals {
 
+  /** Throws an [[InvalidGem]] with a message about an invalid gemCounter.
+   *
+   * @throws InvalidGem always.
+   */
   def NegativeGems(): Unit = {
     if (gemCounter < 0) {
       throw new InvalidGem("No puede iniciar con vidas negativas")
