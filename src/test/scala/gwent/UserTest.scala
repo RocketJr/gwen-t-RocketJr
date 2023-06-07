@@ -32,7 +32,7 @@ class UserTest extends FunSuite {
   var user2: User = _
   var user3: User = _
 
-  override  def beforeEach(context: BeforeEach): Unit = {
+  override def beforeEach(context: BeforeEach): Unit = {
     user1 = new User(name, gems, deck, hand, board1)
     user2 = new User(name, gems, deck, hand, board2)
     user3 = new User(name, -3, deck, hand, board1)

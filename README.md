@@ -53,5 +53,7 @@ consideraríamos Double Dispatch.
 
 ## Diagrama de estados
 
-//![Diagrama de estados](Fotos/diagrama-estados.png)
+---
+
+![Diagrama de estados](Fotos/diagrama-estados.png)
 

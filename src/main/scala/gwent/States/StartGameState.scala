@@ -4,7 +4,7 @@ package gwent.States
 import gwent.GameController
 
 class StartGameState(context: GameController) extends GameState(context) {
-  override def ToWhoStarts(): Unit = {
-    context.state = new WhoStartsFirstState(context)
+  override def ToIdleState(): Unit = {
+    context.state = new IdleState(context)
   }
 }

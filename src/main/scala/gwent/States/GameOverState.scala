@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.States
 
-class GameOverState {
+import gwent.GameController
+
+class GameOverState(context: GameController) extends GameState(context) {
 
 }

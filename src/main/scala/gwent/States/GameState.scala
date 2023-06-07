@@ -8,14 +8,6 @@ import gwent.GameController
 class GameState protected(val context: GameController) {
   context.state = this
 
-  def ToStartGame(): Unit = {
-    transitionError("StartGameState")
-  }
-
-  def ToWhoStarts(): Unit = {
-    transitionError("WhoStartsFirstState")
-  }
-
   def ToIdleState(): Unit = {
     transitionError("IdleState")
   }
@@ -32,9 +24,9 @@ class GameState protected(val context: GameController) {
     transitionError("PlayerTurnState")
   }
 
-  def ToNextPlayerTurn(): Unit = {
-    transitionError("NextPlayerTurnState")
-  }
+  //def ToNextPlayerTurn(): Unit = {
+  //  transitionError("NextPlayerTurnState")
+  //}
 
   def ToEndTurn(): Unit = {
     transitionError("EndTurnState")
