@@ -52,25 +52,25 @@ class GameControllerTest extends munit.FunSuite {
     }
     assert(exception3.getMessage == "Cannot transition from StartGameState to NextPlayerTurnState")
 
-    val exception5 = intercept[InvalidTransitionException] {
+    val exception4 = intercept[InvalidTransitionException] {
       controller.state.ToEndTurn()
     }
-    assert(exception5.getMessage == "Cannot transition from StartGameState to EndTurnState")
+    assert(exception4.getMessage == "Cannot transition from StartGameState to EndTurnState")
 
-    val exception6 = intercept[InvalidTransitionException] {
+    val exception5 = intercept[InvalidTransitionException] {
       controller.state.ToStartTurn()
     }
-    assert(exception6.getMessage == "Cannot transition from StartGameState to StartTurnState")
+    assert(exception5.getMessage == "Cannot transition from StartGameState to StartTurnState")
+
+    val exception6 = intercept[InvalidTransitionException] {
+      controller.state.ToGameOver()
+    }
+    assert(exception6.getMessage == "Cannot transition from StartGameState to GameOverState")
 
     val exception7 = intercept[InvalidTransitionException] {
       controller.state.ToGameOver()
     }
     assert(exception7.getMessage == "Cannot transition from StartGameState to GameOverState")
-
-    val exception8 = intercept[InvalidTransitionException] {
-      controller.state.ToGameOver()
-    }
-    assert(exception8.getMessage == "Cannot transition from StartGameState to GameOverState")
   }
 
   test("No puede pasar PlayerTurnState a IdleState") {
