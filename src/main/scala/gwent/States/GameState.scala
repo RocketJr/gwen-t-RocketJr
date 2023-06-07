@@ -17,11 +17,11 @@ class GameState protected(val context: GameController) {
   }
 
   def playCard(): Unit = {
-    transitionError("PlayerTurnState")
+    transitionError("NextPlayerTurnState")
   }
 
   def passTurn(): Unit = {
-    transitionError("PlayerTurnState")
+    transitionError("NextPlayerTurnState")
   }
 
   //def ToNextPlayerTurn(): Unit = {

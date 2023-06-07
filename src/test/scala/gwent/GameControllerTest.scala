@@ -37,10 +37,49 @@ class GameControllerTest extends munit.FunSuite {
   }
 
   test("No puede pasar de un estado a otro que no sea el que debe") {
-    val exception = intercept[InvalidTransitionException] {
+    val exception1 = intercept[InvalidTransitionException] {
+      controller.state.ToPlayerTurn()
+    }
+    assert(exception1.getMessage == "Cannot transition from StartGameState to PlayerTurnState")
+
+    val exception2 = intercept[InvalidTransitionException] {
+      controller.state.playCard()
+    }
+    assert(exception2.getMessage == "Cannot transition from StartGameState to NextPlayerTurnState")
+
+    val exception3 = intercept[InvalidTransitionException] {
+      controller.state.passTurn()
+    }
+    assert(exception3.getMessage == "Cannot transition from StartGameState to NextPlayerTurnState")
+
+    val exception5 = intercept[InvalidTransitionException] {
+      controller.state.ToEndTurn()
+    }
+    assert(exception5.getMessage == "Cannot transition from StartGameState to EndTurnState")
+
+    val exception6 = intercept[InvalidTransitionException] {
+      controller.state.ToStartTurn()
+    }
+    assert(exception6.getMessage == "Cannot transition from StartGameState to StartTurnState")
+
+    val exception7 = intercept[InvalidTransitionException] {
       controller.state.ToGameOver()
     }
-    assert(exception.getMessage == "Cannot transition from StartGameState to GameOverState")
+    assert(exception7.getMessage == "Cannot transition from StartGameState to GameOverState")
+
+    val exception8 = intercept[InvalidTransitionException] {
+      controller.state.ToGameOver()
+    }
+    assert(exception8.getMessage == "Cannot transition from StartGameState to GameOverState")
+  }
+
+  test("No puede pasar PlayerTurnState a IdleState") {
+    val exception = intercept[InvalidTransitionException] {
+      controller.state.ToIdleState()
+      controller.state.ToPlayerTurn()
+      controller.state.ToIdleState()
+    }
+    assert(exception.getMessage == "Cannot transition from PlayerTurnState to IdleState")
   }
 
   test("Una partida normal debe poder pasar por todos los estados") {
