@@ -4,7 +4,7 @@ package gwent.States
 import gwent.GameController
 
 class EndTurnState(context: GameController) extends GameState(context) {
-  override def ToBeginTurn(): Unit = {
+  override def ToStartTurn(): Unit = {
     context.state = new StartTurnState(context)
   }
 

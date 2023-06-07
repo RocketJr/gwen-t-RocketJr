@@ -32,8 +32,8 @@ class GameState protected(val context: GameController) {
     transitionError("EndTurnState")
   }
 
-  def ToBeginTurn(): Unit = {
-    transitionError("BeginTurnState")
+  def ToStartTurn(): Unit = {
+    transitionError("StartTurnState")
   }
 
   def ToGameOver(): Unit = {

@@ -1,11 +1,9 @@
 package cl.uchile.dcc
 package gwent
 
-import gwent.States.{GameState, StartGameState}
-
+import gwent.States.{GameState, InvalidPlayerAmount, StartGameState}
 import gwent.CardType.Cards
 import gwent.Tablero.Board
-
 import gwent.User
 
 class GameController {
@@ -20,7 +18,7 @@ class GameController {
     //players.foreach(addPlayer(playerName, 0, List.empty, List.empty, new Board()))
 
     if (players.length < 2) {
-      throw new RuntimeException("Se requieren al menos dos jugadores para iniciar la partida.")
+      throw new InvalidPlayerAmount("Se requieren al menos dos jugadores para iniciar la partida.")
     }
 
     // Seleccionar un jugador aleatorio para empezar
