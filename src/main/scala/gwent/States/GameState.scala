@@ -24,6 +24,14 @@ class GameState protected(val context: GameController) {
     transitionError("PlayerTurnState")
   }
 
+  def playCard(): Unit = {
+    transitionError("PlayerTurnState")
+  }
+
+  def passTurn(): Unit = {
+    transitionError("PlayerTurnState")
+  }
+
   def ToNextPlayerTurn(): Unit = {
     transitionError("NextPlayerTurnState")
   }

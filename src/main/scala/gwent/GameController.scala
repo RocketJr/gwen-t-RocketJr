@@ -14,22 +14,19 @@ class GameController {
   }
 
   def startGame(): Unit = {
-    state.ToStartGame()
+  state = new StartGameState(this)
+    //state.ToStartGame()
   }
 
-  def whoStarts(): Unit = {
-    state.ToWhoStarts()
-  }
+  //def whoStarts(): Unit = {
+  //  state.ToWhoStarts()
+  //}
 
-  def playCard(card: Cards): Unit = {
-    state.ToPlayCard(card)
-  }
+  //def endTurn(): Unit = {
+  //  state.ToEndTurn()
+  //}
 
-  def endTurn(): Unit = {
-    state.ToEndTurn()
-  }
-
-  def GameOver(): Unit ={
-    state.ToGameOver()
-  }
+  //def GameOver(): Unit ={
+  //  state.ToGameOver()
+  //}
 }
