@@ -4,10 +4,14 @@ package gwent.States
 import gwent.GameController
 
 class EndTurnState(context: GameController) extends GameState(context) {
+  /** Transition the game state from [[EndTurnState]] to [[StartTurnState]].
+   */
   override def ToStartTurn(): Unit = {
     context.state = new StartTurnState(context)
   }
 
+  /** Transition the game state from [[EndTurnState]] to [[GameOverState]].
+   */
   override def ToGameOver(): Unit = {
     context.state = new GameOverState(context)
   }
