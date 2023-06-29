@@ -4,6 +4,5 @@ package gwent.Effects.WeatherCardEffect
 import gwent.Effects.Effect
 
 abstract class AbstractWeatherEffects (val EffectName: String) extends Effect {
-  def getName: String = EffectName
 
 }
