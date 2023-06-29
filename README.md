@@ -57,3 +57,9 @@ consideraríamos Double Dispatch.
 
 ![Diagrama de estados](Fotos/diagrama-estados.png)
 
+## Entrega Parcial 5 - Tarea 3
+
+---
+
+Para esta entrega, se hicieron los distintos tipos de efectos, en mi caso cree 2 clases abstractas para cada tipo de 
+efecto, como no usan las mismas funciones. Por ahora no hice lo especifico de cada clase por no tener tiempo suficiente.
