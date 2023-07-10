@@ -63,3 +63,10 @@ consideraríamos Double Dispatch.
 
 Para esta entrega, se hicieron los distintos tipos de efectos, en mi caso cree 2 clases abstractas para cada tipo de 
 efecto, como no usan las mismas funciones. Por ahora no hice lo especifico de cada clase por no tener tiempo suficiente.
+
+## Entrega Parcial 6 - Tarea 3
+
+---
+
+Se terminaron todas las funciones de los efectos además de utilizar el Observer pattern para alertar/notificar al Game 
+Controller el momento que un jugador baje su vida a 0, este determina el perdedor. 
