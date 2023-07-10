@@ -47,6 +47,7 @@ class Board {
    */
   def playCloseCombatCard(card: CloseCombatCard): Unit = {
     closeCombatZone = card :: closeCombatZone
+    card.Efecto.apply(card, this)
   }
 
   /** Plays the player's card on the RangedCombatZone.
@@ -56,6 +57,7 @@ class Board {
    */
   def playRangedCombatCard(card: RangedCombatCard): Unit = {
     rangedCombatZone = card :: rangedCombatZone
+    card.Efecto.apply(card, this)
   }
 
   /** Plays the player's card on the SiegeCombatZone.
@@ -65,6 +67,7 @@ class Board {
    */
   def playSiegeCombatCard(card: SiegeCombatCard): Unit = {
     siegeCombatZone = card :: siegeCombatZone
+    card.Efecto.apply(card, this)
   }
 
   /** Plays the player's card on the WeatherZone.
@@ -74,6 +77,7 @@ class Board {
    */
   def playWeatherCard(card: WeatherCard): Unit = {
     sharedWeatherZone.addWeatherCard(card)
+    card.Efecto.apply(card, this)
   }
 
   /** Shows the cards in the CloseCombatZone.

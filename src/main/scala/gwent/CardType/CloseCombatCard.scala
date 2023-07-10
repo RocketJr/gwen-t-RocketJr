@@ -3,8 +3,9 @@ package gwent.CardType
 
 import java.util.Objects
 import gwent.User
-
 import gwent.Tablero.Board
+
+import gwent.Effects.Effect
 
 /** Class representing a close combat unit card in the Gwen't game.
  *
@@ -22,8 +23,8 @@ import gwent.Tablero.Board
  * @version 1.3.0
  */
 
-class CloseCombatCard(CardName: String, Classify: String, Power: Int)
-  extends AbstractUnitCards(CardName, Classify, Power) with Equals {
+class CloseCombatCard (CardName: String, Classify: String, Power: Int, Efecto: Effect)
+  extends AbstractUnitCards(CardName, Classify, Power, Efecto) with Equals {
 
   override def canEqual(that: Any): Boolean =
     that.isInstanceOf[CloseCombatCard]
@@ -31,14 +32,14 @@ class CloseCombatCard(CardName: String, Classify: String, Power: Int)
   override def equals(that: Any): Boolean = {
     if (canEqual(that)) {
       val other = that.asInstanceOf[CloseCombatCard]
-      CardName == other.CardName && Classify == other.Classify && Power == other.Power
+      CardName == other.CardName && Classify == other.Classify && Power == other.Power && Efecto == other.Efecto
     } else {
       false
     }
   }
 
   override def hashCode: Int = {
-    Objects.hash(classOf[CloseCombatCard], CardName, Classify, Power)
+    Objects.hash(classOf[CloseCombatCard], CardName, Classify, Power, Efecto)
   }
 
 

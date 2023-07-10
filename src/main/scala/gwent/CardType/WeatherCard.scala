@@ -3,8 +3,9 @@ package gwent.CardType
 
 import java.util.Objects
 import gwent.User
-
 import gwent.Tablero.Board
+
+import gwent.Effects.Effect
 
 /** Class representing a weather card in the Gwen't game.
  *
@@ -20,7 +21,7 @@ import gwent.Tablero.Board
  * @version 1.3.0
  */
 
-class WeatherCard(val CardName: String, val Classify: String) extends Cards with Equals {
+class WeatherCard(val CardName: String, val Classify: String, val Efecto: Effect) extends Cards with Equals {
 
   override def canEqual(that: Any): Boolean =
     that.isInstanceOf[WeatherCard]
@@ -28,14 +29,14 @@ class WeatherCard(val CardName: String, val Classify: String) extends Cards with
   override def equals(that: Any): Boolean = {
     if (canEqual(that)) {
       val other = that.asInstanceOf[WeatherCard]
-      CardName == other.CardName && Classify == other.Classify
+      CardName == other.CardName && Classify == other.Classify && Efecto == other.Efecto
     } else {
       false
     }
   }
 
   override def hashCode: Int = {
-    Objects.hash(classOf[WeatherCard], CardName, Classify)
+    Objects.hash(classOf[WeatherCard], CardName, Classify, Efecto)
   }
 
 

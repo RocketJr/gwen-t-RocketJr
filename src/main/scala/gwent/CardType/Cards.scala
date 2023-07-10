@@ -2,8 +2,9 @@ package cl.uchile.dcc
 package gwent.CardType
 
 import gwent.User
-
 import gwent.Tablero.Board
+
+import gwent.Effects.Effect
 
 /** Trait representing a card in the Gwen't game.
  *
@@ -30,6 +31,8 @@ trait Cards {
   val CardName: String
   /** The Type of the Card. */
   val Classify: String
+  /** The Type of effect of the Card. */
+  val Efecto: Effect
 
   //def playInZone(user: User, zone: Int): Unit
 

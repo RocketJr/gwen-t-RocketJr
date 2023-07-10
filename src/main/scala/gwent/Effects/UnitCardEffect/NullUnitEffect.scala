@@ -1,10 +1,12 @@
 package cl.uchile.dcc
 package gwent.Effects.UnitCardEffect
 
-import gwent.CardType.Cards
+import gwent.Effects.Effect
+import gwent.Tablero.Board
+import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
 
-class NullUnitEffect extends AbstractUnitEffects("Null") {
-  override def apply(self: Cards, target: Cards): Unit = {
+object NullUnitEffect extends Effect {
+  override def apply(self: Cards, target: Board): Unit = {
     // Do nothing
   }
 }

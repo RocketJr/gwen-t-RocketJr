@@ -2,8 +2,9 @@ package cl.uchile.dcc
 package gwent.CardType
 
 import gwent.User
-
 import gwent.Tablero.Board
+
+import gwent.Effects.Effect
 
 /** Abstract class representing a unit card in the Gwen't game.
  *
@@ -21,7 +22,7 @@ import gwent.Tablero.Board
  * @version 1.3.0
  */
 
-abstract class AbstractUnitCards protected(val CardName: String, val Classify: String, val Power: Int)
+abstract class AbstractUnitCards protected(val CardName: String, val Classify: String, val Power: Int, val Efecto: Effect)
   extends Cards {
 
   /** The current power of the card, which may be affected by various conditions during

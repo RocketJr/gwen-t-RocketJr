@@ -3,18 +3,23 @@ package gwent
 
 import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
 
+import gwent.Effects.Effect
+import gwent.Effects.UnitCardEffect.{NullUnitEffect, RefuerzoMoral, VinculoEstrecho}
+import gwent.Effects.WeatherCardEffect.{ClimaDespejado, EscarchaMordiente, LluviaTorrencial,
+  NieblaImpenetrable, NullWeatherEffect}
+
 import gwent.Tablero.Board
 import munit.FunSuite
 
 class UserTest extends FunSuite {
   val name: String = "Player 1"
   val gems: Int = 3
-  var Card1 = new CloseCombatCard("Card 1", "Close Combat", 10)
-  var Card2 = new RangedCombatCard("Card 2", "Ranged Combat", 8)
-  var Card3 = new SiegeCombatCard("Card 3", "Siege Combat", 12)
-  val Card4 = new WeatherCard("Card 4", "Weather")
-  var Card5 = new CloseCombatCard("Card 5", "Close Combat", 123)
-  val Card6 = new WeatherCard("Card 6", "Weather")
+  var Card1 = new CloseCombatCard("Card 1", "Close Combat", 10, NullUnitEffect)
+  var Card2 = new RangedCombatCard("Card 2", "Ranged Combat", 8, NullUnitEffect)
+  var Card3 = new SiegeCombatCard("Card 3", "Siege Combat", 12, NullUnitEffect)
+  val Card4 = new WeatherCard("Card 4", "Weather", EscarchaMordiente)
+  var Card5 = new CloseCombatCard("Card 5", "Close Combat", 123, NullUnitEffect)
+  val Card6 = new WeatherCard("Card 6", "Weather", EscarchaMordiente)
 
   val deck: List[Cards] = List.empty
   val hand: List[Cards] = List.empty
@@ -142,7 +147,7 @@ class UserTest extends FunSuite {
   }
 
   test("When using a setter, the cards should change and be the same for both Weather boards") {
-    val TestCardW = new WeatherCard("T1", "Weather")
+    val TestCardW = new WeatherCard("T1", "Weather", NullWeatherEffect)
     val newWeatherCard = Some(TestCardW)
 
     assertEquals(board1.getWeatherZone, Option(Card4))
@@ -154,10 +159,10 @@ class UserTest extends FunSuite {
     assertEquals(board1.getWeatherZone, board2.getWeatherZone)
   }
   test("When using a setter for the unit cards, the cards should change and be different for both zones") {
-    val TestCardC1 = new CloseCombatCard("T1C", "Close Combat", 10)
-    val TestCardC2 = new CloseCombatCard("T2C", "Close Combat", 32)
-    val TestCardR = new RangedCombatCard("T3", "Ranged Combat", 8)
-    val TestCardS = new SiegeCombatCard("T4", "Siege Combat", 6)
+    val TestCardC1 = new CloseCombatCard("T1C", "Close Combat", 10, NullUnitEffect)
+    val TestCardC2 = new CloseCombatCard("T2C", "Close Combat", 32, NullUnitEffect)
+    val TestCardR = new RangedCombatCard("T3", "Ranged Combat", 8, NullUnitEffect)
+    val TestCardS = new SiegeCombatCard("T4", "Siege Combat", 6, NullUnitEffect)
     val newCloseCombatZone = List(TestCardC1, TestCardC2)
     val newRangedCombatZone = List(TestCardR)
     val newSiegeCombatZone = List(TestCardS)
@@ -181,7 +186,7 @@ class UserTest extends FunSuite {
 
   test("A computer and a card can be created with all the necessary data") {
     assertEquals(new User(name, gems, deck, hand, board2), user2)
-    assertEquals(new CloseCombatCard("Card 1", "Close Combat", 10), Card1)
+    assertEquals(new CloseCombatCard("Card 1", "Close Combat", 10, NullUnitEffect), Card1)
   }
 
   test("A User and a card has to be different from Another") {

@@ -3,6 +3,9 @@ package gwent.CardType
 
 import munit.FunSuite
 
+import gwent.Effects.Effect
+import gwent.Effects.UnitCardEffect.{NullUnitEffect, RefuerzoMoral, VinculoEstrecho}
+
 class CloseCombatCardTest extends FunSuite {
   val name: String = "Troop"
   val class1: String = "cuerpo a cuerpo"
@@ -10,6 +13,7 @@ class CloseCombatCardTest extends FunSuite {
   var class3: String = "de asedio"
   var Empowered1: Int = 10
   var Empowered2: Int = 2
+  val Effect: Effect = NullUnitEffect
 
   var troop1: CloseCombatCard = _
   var troop2: CloseCombatCard = _
@@ -17,10 +21,10 @@ class CloseCombatCardTest extends FunSuite {
   var troop4: CloseCombatCard = _
 
   override  def beforeEach(context: BeforeEach): Unit = {
-    troop1 = new CloseCombatCard(name, class1, Empowered1)
-    troop2 = new CloseCombatCard(name, class2, Empowered1)
-    troop3 = new CloseCombatCard(name, class3, Empowered2)
-    troop4 = new CloseCombatCard(name, class1, Empowered1)
+    troop1 = new CloseCombatCard(name, class1, Empowered1, Effect)
+    troop2 = new CloseCombatCard(name, class2, Empowered1, Effect)
+    troop3 = new CloseCombatCard(name, class3, Empowered2, Effect)
+    troop4 = new CloseCombatCard(name, class1, Empowered1, Effect)
   }
 
   test("A Card needs a name") {
@@ -37,6 +41,11 @@ class CloseCombatCardTest extends FunSuite {
     assertEquals(troop3.Power, Empowered2)
   }
 
+  test("A card needs an Effect") {
+    assertEquals(troop1.Efecto, Effect)
+    assertEquals(troop3.Efecto, Effect)
+  }
+
   test("A CardUnit can be created with all the necessary data") {
     assertEquals(troop1, troop4)
     assertNotEquals(troop1, troop2)
@@ -47,6 +56,6 @@ class CloseCombatCardTest extends FunSuite {
   }
 
   test("The hash code of a CardUnit is consistent with equals") {
-    assertEquals(new CloseCombatCard(name, class1, Empowered1).##, troop1.##)
+    assertEquals(new CloseCombatCard(name, class1, Empowered1, Effect).##, troop1.##)
   }
 }
