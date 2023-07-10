@@ -30,6 +30,8 @@ abstract class AbstractUnitCards protected(val CardName: String, val Classify: S
    */
   var currentPower: Int = Power
 
+  var originalPower: Int = Power
+
   /** Method to play the card on the board. */
   override def playOnBoard(board: Board): Unit
 }

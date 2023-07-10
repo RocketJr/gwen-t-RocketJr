@@ -11,17 +11,21 @@ import munit.FunSuite
 
 class GameControllerTest extends munit.FunSuite {
   var controller: GameController = _
+  var user1: User = _
+  var user2: User = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    controller = new GameController()
+    controller = new GameController(List.empty)
+    user1 = new User("Jugador1", 3, List.empty, List.empty, new Board())
+    user2 = new User("Jugador2", 3, List.empty, List.empty, new Board())
   }
 
   test("Una partida debe empezar") {
     //val gameController = new GameController()
 
     // Agregar jugadores
-    controller.addPlayer("Jugador1", 0, List.empty, List.empty, new Board())
-    controller.addPlayer("Jugador2", 0, List.empty, List.empty, new Board())
+    controller.addPlayer(user1)
+    controller.addPlayer(user2)
 
     // Iniciar el juego con los jugadores agregados
     controller.startGame()
@@ -29,8 +33,8 @@ class GameControllerTest extends munit.FunSuite {
 
   test("No puede iniciar con solo 1 jugador") {
     val exception = intercept[InvalidPlayerAmount] {
-      val gameControllerTest = new GameController()
-      gameControllerTest.addPlayer("Player 1", 0, List.empty, List.empty, new Board())
+      val gameControllerTest = new GameController(List.empty)
+      gameControllerTest.addPlayer(user1)
       controller.startGame()
     }
     assert(exception.getMessage == "Se requieren al menos dos jugadores para iniciar la partida.")

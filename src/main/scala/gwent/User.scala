@@ -5,6 +5,8 @@ import gwent.CardType.Cards
 
 import gwent.Tablero.Board
 
+import gwent.Observadores.AbstractSubject
+
 import java.util.Objects
 
 /** Class representing a player in the Gwen't game.
@@ -29,7 +31,14 @@ import java.util.Objects
  */
 
 class User(val name: String, var gemCounter: Int, private var _deck: List[Cards],
-           private var _hand: List[Cards], var board: Board) extends Equals {
+           private var _hand: List[Cards], var board: Board) extends AbstractSubject[WinCondition] with Equals {
+
+  def LoseHealth(): Unit = {
+    gemCounter -= 1
+    if (gemCounter <= 0) {
+      notifyObservers(new WinCondition("Low on Health"))
+    }
+  }
 
   /** Throws an [[InvalidGem]] with a message about an invalid gemCounter.
    *

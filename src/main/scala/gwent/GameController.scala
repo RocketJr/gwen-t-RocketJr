@@ -5,10 +5,26 @@ import gwent.States.{GameState, InvalidPlayerAmount, StartGameState}
 import gwent.CardType.Cards
 import gwent.Tablero.Board
 import gwent.User
+import gwent.Observadores.{Observer,Subject}
 
-class GameController {
+class GameController(private var players: List[User]) extends Observer[WinCondition] {
+  for (player <- players) {
+    player.addObserver(this)
+  }
+
+  private var receivedNotification: Boolean = false
+  override def update(
+                       subject: Subject[WinCondition],
+                       value: WinCondition
+                     ): Unit = {
+    val alo = value.asInstanceOf[WinCondition]
+    println(s"Player $subject has lost the game with ${alo.name}")
+    receivedNotification = true
+  }
+
+
   // Los jugadores de la partida
-  private var players: List[User] = List.empty
+  //private var players: List[User] = List.empty
   private var currentPlayer: Option[User] = None
   // Estado actual del juego
   var state: GameState = new StartGameState(this)
@@ -33,8 +49,8 @@ class GameController {
   }
 
   // Agregar un jugador a la partida
-  def addPlayer(name: String, gemCounter: Int, _deck: List[Cards], _hand: List[Cards], board: Board): Unit = {
-    val player = new User(name, gemCounter, _deck, _hand, board)
+  def addPlayer(player: User): Unit = {
+    //val player = new User(name, gemCounter, _deck, _hand, board)
     players = player :: players
   }
 
