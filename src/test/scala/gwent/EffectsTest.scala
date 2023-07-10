@@ -27,23 +27,35 @@ class EffectsTest extends FunSuite {
   var Card10 = new SiegeCombatCard("Card 10", "Siege Combat", 2983018, NullUnitEffect)
   val Card11 = new WeatherCard("Card 11", "Weather", NullWeatherEffect)
 
+  val T1 = new RangedCombatCard("T1", "Ranged Combat", 12, VinculoEstrecho)
+  val T2 = new RangedCombatCard("T2", "Ranged Combat", 22, RefuerzoMoral)
+  val T3 = new RangedCombatCard("T1", "Ranged Combat", 32, NullUnitEffect)
+  val T4 = new SiegeCombatCard("T4", "Siege Combat", 42, NullUnitEffect)
+  val T5 = new SiegeCombatCard("T4", "Siege Combat", 52, VinculoEstrecho)
+  val T6 = new SiegeCombatCard("T5", "Siege Combat", 62, RefuerzoMoral)
+
 
   val deck1: List[Cards] = List(Card1)
   val deck2: List[Cards] = List(Card3, Card2)
+  val deck3: List[Cards] = List.empty
   val hand1: List[Cards] = List(Card1, Card4, Card3, Card5, Card6, Card2, Card7, Card8, Card11)
   val hand2: List[Cards] = List(Card0, Card9, Card10)
+  val hand3: List[Cards] = List(T1,T2,T3,T4,T5,T6)
 
   var board1 = new Board()
   var board2 = new Board()
+  var board3 = new Board()
   //val game = new GameInterface()
   //val game: List[Board] = List(board1,board2)
 
   var user1: User = _
   var user2: User = _
+  var user3: User = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     user1 = new User(name, gems, deck1, hand1, board1)
     user2 = new User(name, gems, deck2, hand2, board2)
+    user3 = new User(name, gems, deck3, hand3, board3)
   }
   test("El poder de las cartas Close Combat debe ser 1 cuando se juegue una carta clima con Escarcha mordiente") {
 
@@ -122,5 +134,31 @@ class EffectsTest extends FunSuite {
     board1.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
     board1.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
     //board2.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
+  }
+
+  test("Se debe poder usar Refuerzo Moral y Vinculo Estrecho para las cartas rango y asedio") {
+    user3.playCard(T3)
+    assertEquals(T3.currentPower, T3.originalPower)
+
+    user3.playCard(T2)
+    assertEquals(T3.currentPower, T3.originalPower + 1)
+    assertEquals(T2.currentPower, T2.originalPower)
+
+    user3.playCard(T1)
+    assertEquals(T3.currentPower, (T3.originalPower + 1) * 2)
+    assertEquals(T2.currentPower, T2.originalPower)
+    assertEquals(T1.currentPower, T1.originalPower * 2)
+
+    user3.playCard(T4)
+    assertEquals(T4.currentPower, T4.originalPower)
+
+    user3.playCard(T5)
+    assertEquals(T4.currentPower, T4.originalPower * 2)
+    assertEquals(T5.currentPower, T5.originalPower * 2)
+
+    user3.playCard(T6)
+    assertEquals(T4.currentPower, (T4.originalPower * 2) + 1)
+    assertEquals(T5.currentPower, (T5.originalPower * 2) + 1)
+    assertEquals(T6.currentPower, T6.originalPower)
   }
 }

@@ -12,14 +12,12 @@ class GameController(private var players: List[User]) extends Observer[WinCondit
     player.addObserver(this)
   }
 
-  private var receivedNotification: Boolean = false
   override def update(
                        subject: Subject[WinCondition],
                        value: WinCondition
                      ): Unit = {
-    val alo = value.asInstanceOf[WinCondition]
-    println(s"Player $subject has lost the game with ${alo.name}")
-    receivedNotification = true
+    val winCondition = value.asInstanceOf[WinCondition]
+    println(s"Player $subject has lost the game from ${winCondition.name}")
   }
 
 
@@ -49,9 +47,9 @@ class GameController(private var players: List[User]) extends Observer[WinCondit
   }
 
   // Agregar un jugador a la partida
-  def addPlayer(player: User): Unit = {
+  //def addPlayer(player: User): Unit = {
     //val player = new User(name, gemCounter, _deck, _hand, board)
-    players = player :: players
-  }
+    //players = player :: players
+  //}
 
 }

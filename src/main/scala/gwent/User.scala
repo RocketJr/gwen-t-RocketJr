@@ -36,7 +36,7 @@ class User(val name: String, var gemCounter: Int, private var _deck: List[Cards]
   def LoseHealth(): Unit = {
     gemCounter -= 1
     if (gemCounter <= 0) {
-      notifyObservers(new WinCondition("Low on Health"))
+      notifyObservers(new WinCondition("being low on health"))
     }
   }
 
