@@ -48,6 +48,8 @@ class EffectsTest extends FunSuite {
   //val game = new GameInterface()
   //val game: List[Board] = List(board1,board2)
 
+  val tableros: List[Board] = List(board1, board2)
+
   var user1: User = _
   var user2: User = _
   var user3: User = _
@@ -100,7 +102,7 @@ class EffectsTest extends FunSuite {
     board1.getCloseCombatZone.foreach(card => assertEquals(card.currentPower, 1))
     board1.getRangedCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
     board1.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
-    //board2.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
+    board2.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
 
     user1.playCard(Card11)
     assertEquals(user1.hand, List(Card4, Card7, Card8))
@@ -109,6 +111,7 @@ class EffectsTest extends FunSuite {
     board1.getCloseCombatZone.foreach(card => assertEquals(card.currentPower, 1))
     board1.getRangedCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
     board1.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
+    board2.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
 
     user1.playCard(Card7)
     assertEquals(user1.hand, List(Card4, Card8))
@@ -117,23 +120,25 @@ class EffectsTest extends FunSuite {
     board1.getCloseCombatZone.foreach(card => assertEquals(card.currentPower, 1))
     board1.getRangedCombatZone.foreach(card => assertEquals(card.currentPower, 1))
     board1.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
-    //board2.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
+    board2.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
 
     user1.playCard(Card8)
+    Card8.applyClimateEffect(tableros)
     assertEquals(user1.hand, List(Card4))
     assertEquals(board1.getWeatherZone, Option(Card8))
 
     board1.getCloseCombatZone.foreach(card => assertEquals(card.currentPower, 1))
     board1.getRangedCombatZone.foreach(card => assertEquals(card.currentPower, 1))
     board1.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, 1))
-    //board2.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
+    board2.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, 1))
 
     user1.playCard(Card4)
+    Card4.applyClimateEffect(tableros)
     assertEquals(user1.hand, List())
     assertEquals(board1.getWeatherZone, Option(Card4))
     board1.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
     board1.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
-    //board2.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
+    board2.getSiegeCombatZone.foreach(card => assertEquals(card.currentPower, card.originalPower))
   }
 
   test("Se debe poder usar Refuerzo Moral y Vinculo Estrecho para las cartas rango y asedio") {

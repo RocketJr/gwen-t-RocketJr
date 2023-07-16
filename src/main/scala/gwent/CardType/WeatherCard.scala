@@ -49,4 +49,8 @@ class WeatherCard(val CardName: String, val Classify: String, val Efecto: Effect
     board.playWeatherCard(this)
   }
 
+  def applyClimateEffect(boards: List[Board]): Unit = {
+    boards.foreach(board => Efecto.apply(this, board))
+  }
+
 }
