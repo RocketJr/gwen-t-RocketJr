@@ -8,10 +8,10 @@ import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard
 object ClimaDespejado extends Effect {
   override def apply(self: Cards, target: Board): Unit = {
     val closeCombatZone = target.getCloseCombatZone
-    closeCombatZone.foreach(card => card.currentPower = card.originalPower)
+    closeCombatZone.foreach(card => card.currentPower = card.originalAfterEffect)
     val rangedCombatZone = target.getRangedCombatZone
-    rangedCombatZone.foreach(card => card.currentPower = card.originalPower)
+    rangedCombatZone.foreach(card => card.currentPower = card.originalAfterEffect)
     val siegeCombatZone = target.getSiegeCombatZone
-    siegeCombatZone.foreach(card => card.currentPower = card.originalPower)
+    siegeCombatZone.foreach(card => card.currentPower = card.originalAfterEffect)
   }
 }

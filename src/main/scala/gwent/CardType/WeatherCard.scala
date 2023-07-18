@@ -18,7 +18,7 @@ import gwent.Effects.Effect
  * @param Classify The classification of the card.
  * @author Leonardo Rikhardsson
  * @since 1.0.0
- * @version 1.3.0
+ * @version 3.1.0
  */
 
 class WeatherCard(val CardName: String, val Classify: String, val Efecto: Effect) extends Cards with Equals {
@@ -49,6 +49,10 @@ class WeatherCard(val CardName: String, val Classify: String, val Efecto: Effect
     board.playWeatherCard(this)
   }
 
+  /** Applies the weather effect to all the cards on the game.
+   *
+   * Applies 1 effect at a time to all the cards of every board.
+   */
   def applyClimateEffect(boards: List[Board]): Unit = {
     boards.foreach(board => Efecto.apply(this, board))
   }

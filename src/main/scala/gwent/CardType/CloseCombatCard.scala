@@ -20,7 +20,7 @@ import gwent.Effects.Effect
  * @param Power The power of the Card.
  * @author Leonardo Rikhardsson
  * @since 1.0.0
- * @version 1.3.0
+ * @version 3.1.0
  */
 
 class CloseCombatCard (CardName: String, Classify: String, Power: Int, Efecto: Effect)

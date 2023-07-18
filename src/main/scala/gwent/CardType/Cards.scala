@@ -23,7 +23,7 @@ import gwent.Effects.Effect
  *
  * @author Leonardo Rikhardsson
  * @since 1.0.1
- * @version 1.3.0
+ * @version 3.1.0
  */
 
 trait Cards {

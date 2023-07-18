@@ -31,7 +31,15 @@ abstract class AbstractUnitCards protected(val CardName: String, val Classify: S
    */
   var currentPower: Int = Power
 
-  var originalPower: Int = Power
+  /** The power of the card after any unit card effect and before weather effects
+   * Initially set to the base [[Power]] of the card.
+   */
+  var originalAfterEffect: Int = Power
+
+  /** The original power of the card, which won't be affected by gameplay since it is to reference the original power
+   * Initially set to the base [[Power]] of the card.
+   */
+  var originalBeforeEffect: Int = Power
 
   /** Method to play the card on the board. */
   override def playOnBoard(board: Board): Unit
