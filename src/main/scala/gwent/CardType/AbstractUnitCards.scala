@@ -17,6 +17,7 @@ import gwent.Effects.Effect
  * @param CardName The name of the Card.
  * @param Classify The class of the Card.
  * @param Power The power of the Card.
+ *              
  * @author Leonardo Rikhardsson
  * @since 1.0.1
  * @version 1.3.0

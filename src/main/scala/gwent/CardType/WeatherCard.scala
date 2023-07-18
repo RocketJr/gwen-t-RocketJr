@@ -16,6 +16,7 @@ import gwent.Effects.Effect
  * @constructor Creates a new `WeatherCard` with a specified name and classification.
  * @param CardName The name of the Card.
  * @param Classify The classification of the card.
+ *                 
  * @author Leonardo Rikhardsson
  * @since 1.0.0
  * @version 3.1.0

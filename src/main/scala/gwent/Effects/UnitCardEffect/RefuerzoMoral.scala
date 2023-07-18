@@ -5,7 +5,12 @@ import gwent.Effects.Effect
 import gwent.Tablero.Board
 import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
 
+/** Effect representing a Morale Boost that increases the power of allied units from the same zone */
+
 object RefuerzoMoral extends Effect {
+
+  /** Applies the Morale Boost Effect to the target cards on the same zone.
+   */
   override def apply(self: Cards, target: Board): Unit = {
     val zone = self match {
       case e: CloseCombatCard => target.getCloseCombatZone

@@ -5,7 +5,12 @@ import gwent.Effects.Effect
 import gwent.Tablero.Board
 import gwent.CardType.{Cards, CloseCombatCard, RangedCombatCard, SiegeCombatCard, WeatherCard}
 
+/** Effect representing a Close Bond that doubles the power of the card with the same name as itself */
+
 object VinculoEstrecho extends Effect {
+
+  /** Applies the Close Bond Effect to the target card on the same zone.
+   */
   override def apply(self: Cards, target: Board): Unit = {
     val Fila = self match {
       case _: CloseCombatCard => target.getCloseCombatZone

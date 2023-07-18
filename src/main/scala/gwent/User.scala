@@ -25,6 +25,7 @@ import java.util.Objects
  * @param _deck The amount of cards the player has on the deck.
  * @param _hand The amount of cards the player has on the hand.
  * @param board The board represented in the game.
+ *
  * @author Leonardo Rikhardsson
  * @since 1.0.1
  * @version 1.3.0

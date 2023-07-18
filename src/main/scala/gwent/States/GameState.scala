@@ -5,6 +5,23 @@ import gwent.CardType.Cards
 
 import gwent.GameController
 
+/** Represents a state in the game, as a part of the State Design Pattern implementation.
+ *
+ * This class is a complete, yet fundamental representation of a game state.
+ * It provides a default behaviour for a state within the game, and should be extended
+ * by other more specific states.
+ * The `context` parameter is used to transition between states.
+ *
+ * The constructor is protected, which prevents direct instantiation of this class, but allows
+ * its use as a base class for other game states.
+ *
+ * @param context The [[GameController]] which controls state transitions.
+ * @constructor Creates a new game state with a given context.
+ * @author Leonardo Rikhardsson
+ * @since 3.0.0
+ * @version 1.0.2
+ */
+
 class GameState protected(val context: GameController) {
   context.state = this
 

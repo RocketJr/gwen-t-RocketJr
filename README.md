@@ -70,3 +70,15 @@ efecto, como no usan las mismas funciones. Por ahora no hice lo especifico de ca
 
 Se terminaron todas las funciones de los efectos además de utilizar el Observer pattern para alertar/notificar al Game 
 Controller el momento que un jugador baje su vida a 0, este determina el perdedor. 
+
+# Tarea 3
+
+---
+
+En la entrega final 3, se crearon los distintos estados de juego al que se puede llegar, agregar los efectos de las
+cartas clima y unidad, y modificar como estos efectos actúan entre ellas. Para el último punto, se crearon 2 variables
+nuevas que representan los poderes originales y el poder después de ser afectada por un efecto. Así al momento de
+usar primero una carta unidad con un efecto como Refuerzo Moral, las unidades de su zona en particular tendrían un poder
+"Poder + 1" pero al momento de usar una carta clima que afecte a esa zona y cambie su poder a 1, y luego con el efecto
+Clima Despejado cambiaría los poderes a como estaba antes, osea "Poder + 1". Además se agregaron los observadores para
+notificar al momento que un usuario tenga 0 vidas o menos.
