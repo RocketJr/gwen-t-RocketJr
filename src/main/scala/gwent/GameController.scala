@@ -31,9 +31,6 @@ class GameController(private var players: List[User]) extends Observer[WinCondit
   }
 
   /** Updates the Game Controller when the state of a player changes.
-   *
-   * @param subject The subject triggering the update.
-   * @param value The value for the WindCondition.
    */
   override def update(
                        subject: Subject[WinCondition],
