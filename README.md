@@ -15,6 +15,18 @@ This project's goal is to create a (simplified) clone of the
 
 **The rest of the documentation is left for the users of this template to complete**
 
+# Descripción
+
+---
+El proyecto a realizar será crear un clon (simplificado) del juego de cartas _Gwent_ desarrollado por _CD Projekt RED_.
+A grandes rasgos el juego tendrá dos jugadores, uno controlado por el usuario y otro controlado por la computadora.
+Cada jugador tendrá un mazo y una mano de cartas que puede jugar en un tablero en una partida al mejor de tres
+rondas.
+
+# Tarea 1
+
+---
+
 Para la entrega parcial 1, empecé realizando los distintos tests para los elementos básicos del juego: Jugador y Carta
 Creando las distintas variables usadas en la clase player, como el nombre, su posición, las gemas(vidas), cartas en
 el mazo y las cartas en su mano.
